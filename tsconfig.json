@@ -41,7 +41,7 @@
     "types": ["node"],
     "typeRoots": ["node_modules/@types"]
   },
-  "include": ["Src/**/*.ts","Src/**/*.js"],
+  "include": ["src/**/*.ts","src/**/*.js"],
   "exclude": ["node_modules/**","**/*.spec.ts"],
   "compileOnSave": false
 }
