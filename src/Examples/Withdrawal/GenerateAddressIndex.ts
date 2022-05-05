@@ -2,7 +2,7 @@ import { AddressType, CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@
 import { GenerateAddressAsync } from "../../Helpers/GenerateAddress";
 import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
 import { WalletInstanceAsync } from "../../Helpers/WalletInstance";
-import { clientId, clientSecretId } from "../../Settings";
+import { clientId, clientSecretId, walletId } from "../../Settings";
 
 const main=async (): Promise<void>=>{
 
@@ -19,7 +19,7 @@ const main=async (): Promise<void>=>{
     let walletInstance:Wallet=await WalletInstanceAsync({
         liminalJs:liminalJs,
         coin:CoinsEnum.eth,
-        walletId:928
+        walletId:Number(walletId)
     });
 
     let response:AddressType=await GenerateAddressAsync({
