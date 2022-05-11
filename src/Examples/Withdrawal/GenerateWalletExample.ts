@@ -11,7 +11,7 @@ const main=async(): Promise<void>=>{
             clientId:clientId,
             clientSecret:clientSecretId
         },
-        env:LiminalEnvironment.dev
+        env:LiminalEnvironment.test
     });
 
     // Step 2: Generate Wallet
