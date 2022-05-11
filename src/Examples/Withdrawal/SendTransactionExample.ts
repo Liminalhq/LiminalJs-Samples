@@ -30,7 +30,7 @@ const main=async():Promise<void>=>{
     // let walletInstance:Wallet=await WalletInstanceAsync({
     //     liminalJs:liminalJs,
     //     coin:CoinsEnum.eth,
-    //     walletId:928,
+    //     walletId:Number(walletId),
     //     allToken:true,
     //     tokenOptions:{
     //         tokenName:"bat",
@@ -59,9 +59,6 @@ const main=async():Promise<void>=>{
         ],
         sequenceId: sequenceId
     });
-
-   
-
 }
 
 main()
