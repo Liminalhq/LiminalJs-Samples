@@ -70,7 +70,7 @@ CLIENT_SECRET_ID=YOUR_SDK_CLIENT_SECRET_ID
 </ul>
 
 #### Step 6
-Run the following script to generate withdrwal wallet.
+Run the following script to generate withdrawal wallet.
 ```
 npm run start:gw
 ``` 
