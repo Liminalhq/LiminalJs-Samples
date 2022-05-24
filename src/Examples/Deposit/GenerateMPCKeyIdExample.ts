@@ -1,9 +1,8 @@
-import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { CoinsEnum, GenerateMPCKeyIDResultWrapper, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { GenerateMPCKeyIdAsync } from "../../Helpers/GenerateMPCKeyId";
 import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
 import { WalletInstanceAsync } from "../../Helpers/WalletInstance";
-import { ConsolidateTransactionAsync } from "../../Integration/ConsolidateTransactionEVM";
-import { clientId, clientSecretId, depositWalletId, targetAddress, tsmCred } from "../../Settings";
-
+import { clientId, clientSecretId, depositWalletId, tsmCred } from "../../Settings";
 
 export const main=async():Promise<void>=>{
 
@@ -13,7 +12,7 @@ export const main=async():Promise<void>=>{
         let liminalJs:LiminalJs=await LiminalAuthAsync({
             liminalOptions:{
                 clientId:clientId,
-                clientSecret: clientSecretId
+                clientSecret:clientSecretId
             },
             env:LiminalEnvironment.test
         });
@@ -23,15 +22,16 @@ export const main=async():Promise<void>=>{
             liminalJs:liminalJs,
             coin:CoinsEnum.eth,
             walletId:Number(depositWalletId)
-        });
+        }); 
 
-
-        // Step 3: Consolidate Send Transaction
-        ConsolidateTransactionAsync({
+        // Step 3:Generate MPC Key Id
+        let response:GenerateMPCKeyIDResultWrapper=await GenerateMPCKeyIdAsync({
             walletInstance:walletInstance,
-            targetAddress:targetAddress,
             tsmCred:tsmCred
         });
+
+        console.log("Key ID Data: => ", JSON.stringify(response));
+       
     }
     catch(ex)
     {

@@ -1,9 +1,8 @@
-import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { AddressType, CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { GenerateAddressAsync } from "../../Helpers/GenerateAddress";
 import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
 import { WalletInstanceAsync } from "../../Helpers/WalletInstance";
-import { ConsolidateTransactionAsync } from "../../Integration/ConsolidateTransactionEVM";
-import { clientId, clientSecretId, depositWalletId, targetAddress, tsmCred } from "../../Settings";
-
+import { clientId, clientSecretId, depositWalletId } from "../../Settings";
 
 export const main=async():Promise<void>=>{
 
@@ -13,7 +12,7 @@ export const main=async():Promise<void>=>{
         let liminalJs:LiminalJs=await LiminalAuthAsync({
             liminalOptions:{
                 clientId:clientId,
-                clientSecret: clientSecretId
+                clientSecret:clientSecretId
             },
             env:LiminalEnvironment.test
         });
@@ -25,13 +24,13 @@ export const main=async():Promise<void>=>{
             walletId:Number(depositWalletId)
         });
 
-
-        // Step 3: Consolidate Send Transaction
-        ConsolidateTransactionAsync({
-            walletInstance:walletInstance,
-            targetAddress:targetAddress,
-            tsmCred:tsmCred
+        // Step 3 Generate Address
+        let address:AddressType=await GenerateAddressAsync({
+            path:0,
+            walletInstance:walletInstance
         });
+
+        console.log("Address Type =>",JSON.stringify(address));
     }
     catch(ex)
     {
@@ -40,7 +39,7 @@ export const main=async():Promise<void>=>{
 }
 
 main()
-.then(()=> console.log("Script Complete"))
+.then(()=> console.log("Complete"))
 .catch((ex)=>{
     console.log("Error Message => ", ex.message);
 })
