@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:gw": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Withdrawal/GenerateWalletExample.ts",
     "start:st": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Withdrawal/SendTransactionExample.ts",
+    "start:mpc":"ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/GenerateMPCKeyIdExample.ts",
+    "start:ga":"ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/GenerateAddressExample.ts",
+    "start:ct": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/ConsolidateTransactionEVMExample.ts",
     "build": "tsc -p tsconfig.json"
   },
   "keywords": [],
@@ -20,6 +23,7 @@
   "dependencies": {
     "@lmnl/liminaljs": "^1.0.14-Alpha-3",
     "dotenv": "^10.0.0",
-    "guid-typescript": "^1.0.9"
+    "guid-typescript": "^1.0.9",
+    "node-schedule": "^2.1.0"
   }
 }
