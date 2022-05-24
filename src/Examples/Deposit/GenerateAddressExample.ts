@@ -2,7 +2,7 @@ import { AddressType, CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@
 import { GenerateAddressAsync } from "../../Helpers/GenerateAddress";
 import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
 import { WalletInstanceAsync } from "../../Helpers/WalletInstance";
-import { clientId, clientSecretId, depositWalletId } from "../../Settings";
+import { clientId, clientSecretId, depositWalletId, env } from "../../Settings";
 
 export const main=async():Promise<void>=>{
 
@@ -14,7 +14,7 @@ export const main=async():Promise<void>=>{
                 clientId:clientId,
                 clientSecret:clientSecretId
             },
-            env:LiminalEnvironment.test
+            env:LiminalEnvironment[env]
         });
 
         // Step 2: Get Wallet Instance

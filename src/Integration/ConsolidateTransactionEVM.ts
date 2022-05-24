@@ -13,7 +13,7 @@ export interface IConsolidateTransactionOptions{
 export const ConsolidateTransactionAsync=async(params:IConsolidateTransactionOptions): Promise<void>=>{
 
 
-    // Immediate Execute 
+    // immediate Execute 
     let transactionResponse:any[]=await ConsolidatedTransactionAsync({
         walletInstance:params?.walletInstance,
         tsmCred:params?.tsmCred,
@@ -30,6 +30,7 @@ export const ConsolidateTransactionAsync=async(params:IConsolidateTransactionOpt
     });
 
     console.log("Transaction Response =>",JSON.stringify(transactionResponse));
+    
 
     // Run Consolidated Transaction Script as per the scheduleJob
     const hours=Number(consolidateTransactionInterval);

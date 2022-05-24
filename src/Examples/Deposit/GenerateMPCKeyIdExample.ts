@@ -2,7 +2,7 @@ import { CoinsEnum, GenerateMPCKeyIDResultWrapper, LiminalEnvironment, LiminalJs
 import { GenerateMPCKeyIdAsync } from "../../Helpers/GenerateMPCKeyId";
 import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
 import { WalletInstanceAsync } from "../../Helpers/WalletInstance";
-import { clientId, clientSecretId, depositWalletId, tsmCred } from "../../Settings";
+import { clientId, clientSecretId, depositWalletId, env, tsmCred } from "../../Settings";
 
 export const main=async():Promise<void>=>{
 
@@ -14,7 +14,7 @@ export const main=async():Promise<void>=>{
                 clientId:clientId,
                 clientSecret:clientSecretId
             },
-            env:LiminalEnvironment.test
+            env:LiminalEnvironment[env]
         });
 
         // Step 2: Get Wallet Instance

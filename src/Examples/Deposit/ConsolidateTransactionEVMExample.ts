@@ -2,7 +2,7 @@ import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminalj
 import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
 import { WalletInstanceAsync } from "../../Helpers/WalletInstance";
 import { ConsolidateTransactionAsync } from "../../Integration/ConsolidateTransactionEVM";
-import { clientId, clientSecretId, depositWalletId, targetAddress, tsmCred } from "../../Settings";
+import { clientId, clientSecretId, depositWalletId, env, targetAddress, tsmCred } from "../../Settings";
 
 
 export const main=async():Promise<void>=>{
@@ -15,7 +15,7 @@ export const main=async():Promise<void>=>{
                 clientId:clientId,
                 clientSecret: clientSecretId
             },
-            env:LiminalEnvironment.test
+            env:LiminalEnvironment[env]
         });
 
         // Step 2: Get Wallet Instance

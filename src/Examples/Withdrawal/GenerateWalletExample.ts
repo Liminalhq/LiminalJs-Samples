@@ -1,7 +1,7 @@
 import { CloudProvider, CoinsEnum, GenerateWalletResultDataWrapper, LiminalEnvironment, LiminalJs, WalletType } from "@lmnl/liminaljs";
 import { GenerateWalletAsync } from "../../Helpers/GenerateWallet";
 import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
-import { clientId, clientSecretId, keyId } from "../../Settings";
+import { clientId, clientSecretId, env, keyId } from "../../Settings";
 
 const main=async(): Promise<void>=>{
     
@@ -11,7 +11,7 @@ const main=async(): Promise<void>=>{
             clientId:clientId,
             clientSecret:clientSecretId
         },
-        env:LiminalEnvironment.test
+        env:LiminalEnvironment[env]
     });
 
     // Step 2: Generate Wallet
