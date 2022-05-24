@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:gw": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Withdrawal/GenerateWalletExample.ts",
     "start:st": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Withdrawal/SendTransactionExample.ts",
+    "start:ct":"ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/ConsolidateTransactionEVMExample.ts",
     "build": "tsc -p tsconfig.json"
   },
   "keywords": [],
