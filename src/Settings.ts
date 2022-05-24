@@ -22,3 +22,5 @@ export const tsmCred:tsmCreds={
 export const targetAddress=process?.env?.TARGET_ADDRESS;
 
 export const consolidateTransactionInterval=process?.env?.CONSOLIDATE_TRANSACTION_INTERVAL_IN_HOURS;
+
+export const env=process?.env?.ENVIRONMENT;

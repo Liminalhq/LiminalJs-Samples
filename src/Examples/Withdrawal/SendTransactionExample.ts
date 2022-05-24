@@ -4,7 +4,7 @@ import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
 import { WalletInstanceAsync } from "../../Helpers/WalletInstance";
 import { ResendTransaction } from "../../Integration/ResendTransaction";
 import { SendTransaction } from "../../Integration/SendTransaction";
-import { clientId, clientSecretId, walletId } from "../../Settings";
+import { clientId, clientSecretId, env, walletId } from "../../Settings";
 
 
 
@@ -16,7 +16,7 @@ const main=async():Promise<void>=>{
             clientId:clientId,
             clientSecret:clientSecretId
         },
-        env:LiminalEnvironment.test
+        env:LiminalEnvironment[env]
     });
 
     //Step 2: Get Wallet Instance (Native Coin)
