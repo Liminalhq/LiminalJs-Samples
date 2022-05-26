@@ -1,6 +1,6 @@
 {
   "name": "@lmnl/liminaljs-typescript",
-  "version": "1.2.0-Beta-1",
+  "version": "1.2.0-Beta-3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@lmnl/liminaljs": "^1.2.0-beta-2",
+    "@lmnl/liminaljs": "^1.2.0-beta-3",
     "dotenv": "^10.0.0",
     "guid-typescript": "^1.0.9",
     "node-schedule": "^2.1.0"
