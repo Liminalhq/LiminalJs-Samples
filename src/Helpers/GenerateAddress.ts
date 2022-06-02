@@ -10,7 +10,7 @@ export const GenerateAddressAsync=async (params:IGenerateAddressOptions):Promise
     {
         let walletResult:WalletResult=(await params?.walletInstance?.GetWallet()).Result;
 
-        return params?.walletInstance?.GenerateAddress(walletResult,params?.path);
+        return await params?.walletInstance?.GenerateAddress(walletResult,params?.path);
     }
     catch(ex)
     {

@@ -6,10 +6,10 @@ export interface ISendManyTransactionOptions{
     submitOption?:SubmitOptions;
 }
 
-export const SendManyTransactionAsync=(params:ISendManyTransactionOptions):Promise<any>=>{
+export const SendManyTransactionAsync=async(params:ISendManyTransactionOptions):Promise<any>=>{
     try
     {
-        return params?.walletInstance?.SendMany(params?.recipientsData,params?.submitOption);
+        return await params?.walletInstance?.SendMany(params?.recipientsData,params?.submitOption);
     }
     catch(ex)
     {

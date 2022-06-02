@@ -15,7 +15,7 @@ export const GetTransferTransactionAsync=async (params:IGetTransferTransactionOp
         });
 
 
-        return params?.walletInstance?.GetTransfer({
+        return await params?.walletInstance?.GetTransfer({
             txId:status.identifier
         });
     }
@@ -30,10 +30,10 @@ export interface IGetTransferTransactionListOptions{
     pagination:Pagination
 }
 
-export const GetTransferTransactionListAsync=(params:IGetTransferTransactionListOptions):Promise<TransferTransactionWrapper[]>=>{
+export const GetTransferTransactionListAsync=async(params:IGetTransferTransactionListOptions):Promise<TransferTransactionWrapper[]>=>{
     try
     {   
-        return params?.walletInstance?.Transfers({
+        return await params?.walletInstance?.Transfers({
             pageNumber:params?.pagination?.pageNumber,
             limit:params?.pagination?.pageSize ?? 50
         });

@@ -5,10 +5,10 @@ export interface IGetAddressBalanceOptions{
     getAddressBalanceOption:GetAddressBalanceOptions;
 }
 
-export const GetAddressBalanceAsync=(params:IGetAddressBalanceOptions): Promise<GetAddressBalanceResultDataWrapper>=>{
+export const GetAddressBalanceAsync=async(params:IGetAddressBalanceOptions): Promise<GetAddressBalanceResultDataWrapper>=>{
     try
     {
-        return params?.walletInstance?.GetAddressBalance(params?.getAddressBalanceOption);
+        return await params?.walletInstance?.GetAddressBalance(params?.getAddressBalanceOption);
     }
     catch(ex){
         throw ex;
