@@ -18,6 +18,7 @@ export const main=async():Promise<void>=>{
             env:LiminalEnvironment[env]
         });
 
+        // Native Coin Consolidate Transaction
         // Step 2: Get Wallet Instance
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
@@ -25,13 +26,30 @@ export const main=async():Promise<void>=>{
             walletId:Number(depositWalletId)
         });
 
-
         // Step 3: Consolidate Send Transaction
         ConsolidateTransactionAsync({
             walletInstance:walletInstance,
             targetAddress:targetAddress,
             tsmCred:tsmCred
         });
+
+        // Token Consolidate Transaction
+        // let walletInstance:Wallet=await WalletInstanceAsync({
+        //     liminalJs:liminalJs,
+        //     coin:CoinsEnum.eth,
+        //     walletId:Number(depositWalletId),
+        //     tokenOptions:{
+        //         tokenName:"bat",
+        //         tokenAddress:"0xbF7A7169562078c96f0eC1A8aFD6aE50f12e5A99"
+        //     }
+        // });
+
+        // // Step 3: Consolidate Send Transaction
+        // ConsolidateTransactionAsync({
+        //     walletInstance:walletInstance,
+        //     targetAddress:targetAddress,
+        //     tsmCred:tsmCred,
+        // });
     }
     catch(ex)
     {
