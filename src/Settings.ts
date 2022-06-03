@@ -8,7 +8,7 @@ export const keyId=process?.env?.DEFAULT_KEY_ID;
 export const clientId=process?.env?.CLIENT_ID;
 export const clientSecretId=process?.env?.CLIENT_SECRET_ID;
 
-export const walletId=process?.env?.WALLET_ID;
+export const withdrawalWalletId=process?.env?.WITHDRAWAL_WALLET_ID;
 
 export const depositWalletId=process?.env?.DEPOSIT_WALLET_ID;
 
@@ -24,3 +24,5 @@ export const targetAddress=process?.env?.TARGET_ADDRESS;
 export const consolidateTransactionInterval=process?.env?.CONSOLIDATE_TRANSACTION_INTERVAL_IN_HOURS;
 
 export const env=process?.env?.ENVIRONMENT;
+
+export const cloudProviderName=process?.env?.PROVIDER_NAME;

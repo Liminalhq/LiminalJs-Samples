@@ -4,10 +4,10 @@ export interface IGetBalanceOptions{
     walletInstance:Wallet;
 }
 
-export const GetWalletBalanceAsync=(params:IGetBalanceOptions):Promise<GetBalanceResultDataWrapper>=>{
+export const GetWalletBalanceAsync=async(params:IGetBalanceOptions):Promise<GetBalanceResultDataWrapper>=>{
     try
     {
-        return params?.walletInstance?.GetBalance();
+        return await params?.walletInstance?.GetBalance();
     }
     catch(ex)
     {

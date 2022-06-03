@@ -4,7 +4,7 @@ import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
 import { WalletInstanceAsync } from "../../Helpers/WalletInstance";
 import { ResendTransaction } from "../../Integration/ResendTransaction";
 import { SendTransaction } from "../../Integration/SendTransaction";
-import { clientId, clientSecretId, env, walletId } from "../../Settings";
+import { clientId, clientSecretId, env, withdrawalWalletId } from "../../Settings";
 
 
 
@@ -23,14 +23,14 @@ const main=async():Promise<void>=>{
     let walletInstance:Wallet=await WalletInstanceAsync({
         liminalJs:liminalJs,
         coin:CoinsEnum.eth,
-        walletId:Number(walletId)
+        walletId:Number(withdrawalWalletId)
     });
 
     // Step 2.1: Get Wallet Instance (Token)
     // let walletInstance:Wallet=await WalletInstanceAsync({
     //     liminalJs:liminalJs,
     //     coin:CoinsEnum.eth,
-    //     walletId:Number(walletId),
+    //     walletId:Number(withdrawalWalletId),
     //     allToken:true,
     //     tokenOptions:{
     //         tokenName:"bat",
