@@ -1,7 +1,7 @@
 import { CloudProvider, CoinsEnum, GenerateWalletResultDataWrapper, LiminalEnvironment, LiminalJs, WalletType } from "@lmnl/liminaljs";
 import { GenerateWalletAsync } from "../../Helpers/GenerateWallet";
 import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
-import { clientId, clientSecretId, env, keyId } from "../../Settings";
+import { clientId, clientSecretId, cloudProviderName, env, keyId } from "../../Settings";
 
 const main=async(): Promise<void>=>{
     
@@ -25,7 +25,7 @@ const main=async(): Promise<void>=>{
         signers:[
             {
                 keyId:keyId,
-                type:CloudProvider.AZURE
+                type:CloudProvider[cloudProviderName]
             }
         ]
     });
