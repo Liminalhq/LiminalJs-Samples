@@ -1,28 +1,35 @@
 import { tsmCreds } from "@lmnl/liminaljs";
 
 import * as dotenv from "dotenv";
-dotenv.config();
+//import path from "path";
+dotenv.config(
+    {
+        override:true
+    }
+);
 
-export const keyId=process?.env?.DEFAULT_KEY_ID;
+export let keyId=process?.env?.DEFAULT_KEY_ID;
 
-export const clientId=process?.env?.CLIENT_ID;
-export const clientSecretId=process?.env?.CLIENT_SECRET_ID;
+export let clientId=process?.env?.CLIENT_ID;
+export let clientSecretId=process?.env?.CLIENT_SECRET_ID;
 
-export const withdrawalWalletId=process?.env?.WITHDRAWAL_WALLET_ID;
+export let withdrawalWalletId=process?.env?.WITHDRAWAL_WALLET_ID;
 
-export const depositWalletId=process?.env?.DEPOSIT_WALLET_ID;
+export let depositWalletId=process?.env?.DEPOSIT_WALLET_ID;
 
-export const tsmCred:tsmCreds={
+export let tsmCred:tsmCreds={
     url:process?.env?.TSM_URL,
     userID:process?.env?.TSM_USER_ID,
     password:process?.env?.TSM_PASSWORD,
     publicKey:process?.env?.TSM_PUBLIC_KEY
 }
 
-export const targetAddress=process?.env?.TARGET_ADDRESS;
+export let targetAddress=process?.env?.TARGET_ADDRESS;
 
-export const consolidateTransactionInterval=process?.env?.CONSOLIDATE_TRANSACTION_INTERVAL_IN_HOURS;
+export let consolidateTransactionInterval=process?.env?.CONSOLIDATE_TRANSACTION_INTERVAL_IN_HOURS;
 
-export const env=process?.env?.ENVIRONMENT;
+export let env=process?.env?.ENVIRONMENT;
 
-export const cloudProviderName=process?.env?.PROVIDER_NAME;
+export let cloudProviderName=process?.env?.PROVIDER_NAME;
+
+export let regionName=process?.env?.REGION;
