@@ -1,0 +1,278 @@
+provider "aws" {
+    region = "your-region"
+}
+
+######## ssh key ########
+
+resource "aws_key_pair" "liminal" {
+  key_name   = "liminal-tsm-key"
+  public_key = "pubkey"
+}
+
+######## create security group ########
+
+resource "aws_security_group" "liminal-tsm-sg" {
+    name = "allow-liminal"
+
+    ingress {
+        from_port = 8000
+        to_port = 8000
+        protocol = "TCP"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    ingress {
+        from_port = 9000
+        to_port = 9000
+        protocol = "TCP"
+        cidr_blocks = ["35.83.162.252/32"]
+    }
+
+    ingress {
+        from_port = 22
+        to_port = 22
+        protocol = "TCP"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+
+    egress {
+        from_port = 0
+        to_port = 65535
+        protocol = "TCP"
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+}
+
+######## create EC2 instance ########
+
+resource "aws_instance" "ec2" {
+    ami = "amiid"
+    instance_type = "t3.medium"
+    security_groups = [aws_security_group.liminal-tsm-sg.name]
+    vpc_security_group_ids = ["your-default-sg"]
+    availability_zone = "youraz"
+    user_data = file("bootscript.sh")
+    key_name = aws_key_pair.liminal.key_name
+    tags = {
+        Name = "liminal-tsm-ec2"
+    }
+    root_block_device {
+    volume_size           = "25"
+    volume_type           = "gp2"
+    encrypted             = true
+    delete_on_termination = true
+    tags = {
+      Name = "liminal-tsm-ec2"
+    }
+    }
+}
+
+######## elastic IP ########
+
+resource "aws_eip" "elasticeip" {
+    instance = aws_instance.ec2.id
+}
+
+######## copy conf file inside EC2 ########
+
+resource "null_resource" "copy_execute_0" {
+
+connection {
+        type     = "ssh"
+        user     = "ubuntu"
+        private_key = "${file("../ssh/id_rsa")}"
+        host     = aws_eip.elasticeip.public_ip
+  }
+
+    provisioner "file" {
+        source      = "./config.toml"
+        destination = "/home/ubuntu/config.toml"
+  }
+
+provisioner "file" {
+        source      = "./bootscript.sh"
+        destination = "/home/ubuntu/bootscript.sh"
+
+  }
+
+provisioner "file" {
+        source      = "./docker-compose.yml"
+        destination = "/home/ubuntu/docker-compose.yml"
+  }
+
+provisioner "file" {
+        source      = "./run-docker.sh"
+        destination = "/home/ubuntu/run-docker.sh"
+
+  }
+
+provisioner "file" {
+        source      = "./generate-key.sh"
+        destination = "/home/ubuntu/generate-key.sh"
+
+  }
+
+provisioner "file" {
+        source      = "./tsm-cli"
+        destination = "/home/ubuntu/tsm-cli"
+
+  }
+
+provisioner "file" {
+        source      = "./tar.sh"
+        destination = "/home/ubuntu/tar.sh"
+
+  }
+
+provisioner "file" {
+        source      = "./replace-ip.sh"
+        destination = "/home/ubuntu/replace-ip.sh"
+
+  }
+
+provisioner "file" {
+        source      = "./sdk-creds.json"
+        destination = "/home/ubuntu/sdk-creds.json"
+
+  }
+
+depends_on = [ aws_instance.ec2 ]
+
+}
+
+######## delay resource docker installation ########
+
+resource "time_sleep" "wait_100_seconds" {
+  depends_on = [ null_resource.copy_execute_0 ]
+
+  create_duration = "100s"
+}
+
+######## remote-exec-1 ########
+
+resource "null_resource" "copy_execute_1" {
+
+connection {
+        type     = "ssh"
+        user     = "ubuntu"
+        private_key = "${file("../ssh/id_rsa")}"
+        host     = aws_eip.elasticeip.public_ip
+  }
+
+provisioner "remote-exec" {
+    inline = [
+      "chmod +x /home/ubuntu/generate-key.sh",
+      "/bin/bash /home/ubuntu/generate-key.sh",
+    ]
+   }
+
+depends_on = [ time_sleep.wait_100_seconds ]
+
+}
+
+######## remote-exec-2 ########
+
+resource "null_resource" "copy_execute_2" {
+
+connection {
+        type     = "ssh"
+        user     = "ubuntu"
+        private_key = "${file("../ssh/id_rsa")}"
+        host     = aws_eip.elasticeip.public_ip
+  }
+
+provisioner "remote-exec" {
+    inline = [
+      "chmod +x /home/ubuntu/run-docker.sh",
+      "/bin/bash /home/ubuntu/run-docker.sh",
+    ]
+   }
+
+depends_on = [ null_resource.copy_execute_1 ]
+
+}
+
+######## remote-exec-3 ########
+
+resource "null_resource" "copy_execute_3" {
+
+connection {
+        type     = "ssh"
+        user     = "ubuntu"
+        private_key = "${file("../ssh/id_rsa")}"
+        host     = aws_eip.elasticeip.public_ip
+  }
+
+provisioner "remote-exec" {
+    inline = [
+      "chmod +x /home/ubuntu/tsm-cli",
+      "./tsm-cli",
+    ]
+   }
+
+depends_on = [ null_resource.copy_execute_2 ]
+
+}
+
+######## remote-exec-4 ########
+
+resource "null_resource" "copy_execute_4" {
+
+connection {
+        type     = "ssh"
+        user     = "ubuntu"
+        private_key = "${file("../ssh/id_rsa")}"
+        host     = aws_eip.elasticeip.public_ip
+  }
+
+provisioner "remote-exec" {
+    inline = [
+      "chmod +x /home/ubuntu/replace-ip.sh",
+      "/bin/bash /home/ubuntu/replace-ip.sh",
+    ]
+   }
+
+depends_on = [ null_resource.copy_execute_3 ]
+
+}
+
+
+######## remote-exec-5 ########
+
+resource "null_resource" "copy_execute_5" {
+
+connection {
+        type     = "ssh"
+        user     = "ubuntu"
+        private_key = "${file("../ssh/id_rsa")}"
+        host     = aws_eip.elasticeip.public_ip
+  }
+
+provisioner "remote-exec" {
+    inline = [
+      "chmod +x /home/ubuntu/tar.sh",
+      "/bin/bash /home/ubuntu/tar.sh",
+    ]
+   }
+
+depends_on = [ null_resource.copy_execute_4 ]
+
+}
+
+######## output ########
+
+output "EIP" {
+    value = aws_eip.elasticeip.public_ip
+}
+
+output "SG" {
+    value = aws_security_group.liminal-tsm-sg.id
+}
+
+output "ec2" {
+    value = aws_instance.ec2.id
+}
+
+output "key" {
+    value = aws_key_pair.liminal.key_name
+}

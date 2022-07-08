@@ -7,9 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:cli": "ts-node-dev --respawn --pretty --transpile-only ./src/Cli/Index.ts",
     "start:aws-configure": "aws configure",
+    "start:mpc-setup":"./src/Cli/mpc/install.sh",
     "start:gw": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Withdrawal/GenerateWalletExample.ts",
     "start:st": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Withdrawal/SendTransactionExample.ts",
-    "start:mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/GenerateMPCKeyIdExample.ts",
+    "start:mpc-key": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/GenerateMPCKeyIdExample.ts",
     "start:ga": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/GenerateAddressExample.ts",
     "start:ct": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/ConsolidateTransactionEVMExample.ts",
     "start:psk-aws": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Initialize/GenerateSignerPublicKey/AWS/GetSignerPublicKeysExample.ts",
@@ -40,7 +41,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@lmnl/liminaljs": "^1.2.0-beta-11",
+    "@lmnl/liminaljs": "^1.2.0-beta-12",
     "@types/cli-color": "^2.0.2",
     "cli-progress": "^3.11.2",
     "inquirer": "^8.2.4"

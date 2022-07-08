@@ -1,0 +1,62 @@
+# General configuration for MPC operations.
+[MPC]
+# This is the security threshold for the TSM. It means that the TSM is secure as long as at most threshold number of
+# players are corrupt. Must be greater than 0 and less than the total number of players. Some MPC protocols have
+# restrictions on what the threshold can be.
+Threshold = 1
+
+# Configuration for the local player
+[Player]
+# All players in a TSM are identified by a player index. This is the index of the player running this TSM node.
+# We refer to this player as the local player. Other players are called remote players.
+Index = 0
+# This is a base64 encoding of the private key used to authenticate the local player towards the remote players. This
+# must correspond to the public keys configured on the remote players for this player index. A private key can be
+# generated using the following OpenSSL commands:
+PrivateKey = "privkey1"
+
+# The following is a list of remote players in the TSM.
+#
+# The logic is that lower numbered players open connections to higher numbered players, so URLs are not needed for players
+# with a lower number than the local player.
+[Players.0]
+# The protocol and address of player with index 0. Supported protocols are tcp, ws and wss. If no protocol is
+# specified then tcp is assumed.
+Address = "tcp://node1:9000"
+# This is a base64 encoding of the players public key.
+PublicKey = "pubkey1"
+
+[Players.1]
+Address = "tcp://35.83.162.252:9000"
+PublicKey = "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEB5eOgxzJiUV2rQI3Pleg/wkDc8U5/Izh39Pc2b5TtC6FYwgWTS/hapduYf73dTogvCBsLYGsyev3F8xZivZiTw=="
+
+# Database connection configuration.
+[Database]
+# The driver used for the database. The following database drivers are supported: mysql, mysql and postgres.
+DriverName = "sqlite3"
+DataSourceName = "/tmp/tsmdb"
+# This specifies a master encryption key used to protect database records. Note that this key is not directly
+# used to encrypt data. Use any long random string here and make sure to keep a backup of it somewhere safe.
+EncryptorMasterPassword = "ENCRYPTION_KEY"
+
+# MPC server accepting multiplexed TCP connections from other players.
+# At least one MPC server must be specified if the player index is greater than 0.
+[MPCTCPServer]
+# Port number that this server listens on.
+Port = 9000
+
+# Server accepting connections from the SDK. This must be specified unless the TSM node is running as a local node.
+[SDKServer]
+# Port number that this server listens on.
+Port = 8000
+
+# Configures system logging for the TSM node.
+#[Logging]
+# Log level. If not specified it default to "info".
+#Level = ""
+
+# Computes ECDSA signatures. This protocol requires n >= 2t+1. Cannot be enabled together with DKLS18 or DKLS19.
+#[DKLS18]
+#EnableERSExport = true
+#[SEPH18S]
+[DKLS19]

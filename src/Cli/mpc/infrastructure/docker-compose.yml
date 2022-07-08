@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  node0:
+    image: nexus.sepior.net:19001/tsm-node@sha256:eb49897632b4f15a15700b5c2d903e012811171c56db8fb0fd75e59d2ef8e537
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    networks:
+      - tsm
+    environment:
+      - CONFIG_FILE=/config/config.toml
+    volumes:
+      - ./config/config.toml:/config/config.toml
+networks:
+  tsm:

@@ -1,0 +1,59 @@
+provider "aws" {
+    region = "your-region"
+}
+
+resource "random_password" "password" {
+  length           = 15
+  special          = false
+  override_special = "!#$%&*()-_=+[]{}<>:?%"
+}
+
+resource "random_password" "encryptpasswd" {
+  length           = 32
+  special          = false
+  override_special = "!%&()-_=+[]{}<>:?"
+}
+
+resource "random_password" "tarpassword" {
+  length           = 20
+  special          = false
+  override_special = "!#$%&*()-_=+[]{}<>:?%"
+}
+
+resource "aws_db_instance" "mpc-rds" {
+    db_name = "mpc"
+    identifier = "liminal-tsm-rds"
+    instance_class = "db.t3.medium"
+    engine = "mysql"
+    engine_version = "8.0.27"
+    username = "liminal"
+    password = random_password.password.result
+    port = 3306
+    allocated_storage = 20
+    max_allocated_storage = 100
+    apply_immediately = true
+    backup_retention_period = 10
+    skip_final_snapshot = false
+    final_snapshot_identifier = "liminal-tsm-rds-final"
+    storage_encrypted = true
+
+}
+
+output "myrds" {
+    value = aws_db_instance.mpc-rds.endpoint
+}
+
+output "rdspasswd" {
+    value = random_password.password.result
+    sensitive = true
+}
+
+output "encryptormasterpasswd" {
+    value = random_password.encryptpasswd.result
+    sensitive = true
+}
+
+output "tarpass" {
+    value = random_password.tarpassword.result
+    sensitive = true
+}

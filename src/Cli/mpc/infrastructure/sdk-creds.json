@@ -1,0 +1,6 @@
+{
+    userID: "usrid",
+    url: "httpurl",
+    password: "passwd",
+    publicKey: "pubkey"
+}

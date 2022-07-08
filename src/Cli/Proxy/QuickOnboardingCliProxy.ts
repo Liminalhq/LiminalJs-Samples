@@ -2,6 +2,7 @@ import { ContinueMain } from "../Shared/CLI/ContinueMain";
 import { AwsConfigureCliProxy } from "./AwsConfigureProxy";
 import { CreateAwsKeyCliProxy } from "./CreateAwsKeyCliProxy";
 import { GeneratePublicSignerKeyCliProxy } from "./GeneratePublicSignerKeyCliProxy";
+//import { MPCConfigureCliProxy } from "./MPCConfigureCliProxy";
 import { CreateSDKKeyCliProxy } from "./SDKKeyCliProxy";
 import { TSMCredentialsCliProxy } from "./TSMCredentailsCliProxy";
 const cliProgress = require('cli-progress');
@@ -16,6 +17,9 @@ export class QuickOnboardingCliProxy{
             const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 
             bar.start(5, 0);
+
+            // let mpcSetUpProxyObj=new MPCConfigureCliProxy();
+            //     await mpcSetUpProxyObj?.Execute();
 
             let awsConfigureProxyObj=new AwsConfigureCliProxy();
                 await awsConfigureProxyObj?.Execute();
