@@ -1,7 +1,7 @@
 import { CloudProvider, GetSignerPublicKeyResultDataWrapper, LiminalEnvironment, LiminalJs, WalletType } from "@lmnl/liminaljs";
-import { GetSignerPublicKeyAsync } from "../../Helpers/GetPublicSignerKeys";
-import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
-import { clientId, clientSecretId, cloudProviderName, env,tsmCred } from "../../Settings";
+import { GetSignerPublicKeyAsync } from "../../../../Helpers/GetPublicSignerKeys";
+import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
+import { clientId, clientSecretId, cloudProviderName, env,tsmCred } from "../../../../Settings";
 
 const main=async(): Promise<void>=>{
     
@@ -14,22 +14,14 @@ const main=async(): Promise<void>=>{
         env:LiminalEnvironment[env]
     });
 
-    // Step 2: Generate Public Signer Keys
+    //Step 2 : If you are using MPC
     let response:GetSignerPublicKeyResultDataWrapper[]=await GetSignerPublicKeyAsync({
         liminalJs:liminalJs,
-        cloudProvider:CloudProvider[cloudProviderName]
+        cloudProvider:CloudProvider[cloudProviderName],  // it should be MPC
+        tsmCred:tsmCred 
     });
 
     console.log(`Signer Public Key Response => ${JSON.stringify(response)}`);
-
-    // Step 2 : If you are using MPC
-    // let response:GetSignerPublicKeyResultDataWrapper[]=await GetSignerPublicKeyAsync({
-    //     liminalJs:liminalJs,
-    //     cloudProvider:CloudProvider[cloudProviderName],  // it should be MPC
-    //     tsmCred:tsmCred 
-    // });
-
-    // console.log(`Signer Public Key Response => ${JSON.stringify(response)}`);
 }
 
 main()

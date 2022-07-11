@@ -5,26 +5,45 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start:cli": "ts-node-dev --respawn --pretty --transpile-only ./src/Cli/Index.ts",
+    "start:aws-configure": "aws configure",
+    "start:mpc-setup": "./src/Cli/mpc/install.sh",
     "start:gw": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Withdrawal/GenerateWalletExample.ts",
     "start:st": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Withdrawal/SendTransactionExample.ts",
-    "start:mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/GenerateMPCKeyIdExample.ts",
+    "start:mpc-key": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/GenerateMPCKeyIdExample.ts",
     "start:ga": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/GenerateAddressExample.ts",
     "start:ct": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/ConsolidateTransactionEVMExample.ts",
-    "start:psk":"ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Initialize/GetSignerPublicKeysExample.ts",
+    "start:psk-aws": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Initialize/GenerateSignerPublicKey/AWS/GetSignerPublicKeysExample.ts",
+    "start:psk-mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Initialize/GenerateSignerPublicKey/MPC/GetSignerPublicKeysExample.ts",
+    "debug:dev1": "ts-node-dev --inspect=4320 --pretty --transpile-only ./src/Cli/Index.ts",
+    "debug:dev": "ts-node-dev --inspect=4321 --pretty --transpile-only ./src/Examples/Initialize/CreateAwsKeyExample.ts",
     "build": "tsc -p tsconfig.json"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
   "devDependencies": {
+    "@types/inquirer": "^8.2.1",
     "@types/node": "^16.9.6",
+    "aws-sdk": "^2.991.0",
+    "clear": "^0.1.0",
+    "cli-color": "^2.0.2",
+    "dotenv": "^16.0.1",
+    "envfile": "^6.17.0",
+    "figlet": "^1.5.2",
+    "guid-typescript": "^1.0.9",
+    "linq": "^3.2.4",
+    "node-schedule": "^2.1.0",
+    "npm-commands": "^1.1.0",
+    "ps-tree": "^1.2.0",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@lmnl/liminaljs": "^1.2.0-beta-9",
-    "dotenv": "^10.0.0",
-    "guid-typescript": "^1.0.9",
-    "node-schedule": "^2.1.0"
+    "@lmnl/liminaljs": "^1.2.0-beta-12",
+    "@types/cli-color": "^2.0.2",
+    "cli-progress": "^3.11.2",
+    "inquirer": "^8.2.4"
   }
 }
