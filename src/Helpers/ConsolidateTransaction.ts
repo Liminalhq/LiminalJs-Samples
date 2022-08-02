@@ -31,7 +31,7 @@ export const ConsolidatedTransactionAsync=async(params:IConsolidatedTransactionO
             return params?.walletInstance?.Submit(halfSigned,params?.sequenceId); // Send Many Transaction
 
         }
-        else if(params?.walletInstance?.ParentChain?.toUpperCase()==="EVM")
+        else if(params?.walletInstance?.ParentChain?.toUpperCase()==="EVM" || params?.walletInstance?.ParentChain?.toUpperCase()==="TRON")
         {
             //console.log("EVM call");
             if(params?.consolidateOptions!==undefined)
