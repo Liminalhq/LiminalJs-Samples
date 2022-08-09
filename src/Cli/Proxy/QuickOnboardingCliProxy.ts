@@ -9,17 +9,12 @@ const cliProgress = require('cli-progress');
 
 export class QuickOnboardingCliProxy{
 
-
-
     public async Execute(): Promise<void>{
         try
         {
             const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
 
-            bar.start(5, 0);
-
-            // let mpcSetUpProxyObj=new MPCConfigureCliProxy();
-            //     await mpcSetUpProxyObj?.Execute();
+            bar.start(4, 0);
 
             let awsConfigureProxyObj=new AwsConfigureCliProxy();
                 await awsConfigureProxyObj?.Execute();
@@ -36,15 +31,15 @@ export class QuickOnboardingCliProxy{
 
             bar.update(3);
 
-            let tsmCredentialsProxyObj=new TSMCredentialsCliProxy();
-                await tsmCredentialsProxyObj?.Execute();
+            // let tsmCredentialsProxyObj=new TSMCredentialsCliProxy();
+            //     await tsmCredentialsProxyObj?.Execute();
 
-            bar.update(4);
+            // bar.update(4);
 
             let generatePublicSignerProxyObj=new GeneratePublicSignerKeyCliProxy();
                await generatePublicSignerProxyObj?.Execute();
 
-            bar.update(5);
+            bar.update(4);
 
             await ContinueMain();
         }
