@@ -34,13 +34,14 @@ export class GeneratePublicSignerKeyCliProxy{
             process.env.PROVIDER_NAME="AWS";
             //console.log(`region => ${process?.env?.REGION}`);
 
+            
             let response:GetSignerPublicKeyResultDataWrapper[]=await GetSignerPublicKeyAsync({
                 liminalJs:liminalJs,
                 cloudProvider:CloudProvider[process?.env?.PROVIDER_NAME],
             });
             
-            //console.log(`Signer Public Key Response [${process?.env?.PROVIDER_NAME}] => ${JSON.stringify(response)}`);
-
+            console.log(`Signer Public Key Response [${process?.env?.PROVIDER_NAME}] => ${JSON.stringify(response)}`);
+            /*
             //Save KMS Key and Aws Region Name
             WriteEnvToFile([
                 {
@@ -71,6 +72,7 @@ export class GeneratePublicSignerKeyCliProxy{
             });
         
             //console.log(`Signer Public Key Response [${process?.env?.PROVIDER_NAME}] => ${JSON.stringify(response)}`);
+            */
 
         }
         catch(ex){
