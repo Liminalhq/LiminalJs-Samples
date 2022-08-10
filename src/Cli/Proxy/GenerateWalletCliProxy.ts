@@ -1,5 +1,6 @@
 import inquirer from "inquirer";
 import PromptUI from "inquirer/lib/ui/prompt";
+import { ContinueMain } from "../Shared/CLI/ContinueMain";
 import { IsEnvReady } from "../Shared/IsEnvReady";
 import { DepositWalletListProxy } from "./Wallets/Lists/DepositWalletListProxy";
 import { WithdrawalWalletListProxy } from "./Wallets/Lists/WithdrawalWalletListProxy";
@@ -32,11 +33,11 @@ export class GenerateWalletCliProxy{
         try
         {
 
-            // let flag:boolean=IsEnvReady();
+            let flag:boolean=IsEnvReady();
 
-            // if(flag===false){
-            //     throw new Error(`Missing .env data`);
-            // }
+            if(flag===false){
+                throw new Error(`Missing .env data`);
+            }
 
             this.Inputs();
 
@@ -51,6 +52,8 @@ export class GenerateWalletCliProxy{
                 let withdrawalWalletListProxy:WithdrawalWalletListProxy=new WithdrawalWalletListProxy();
                     await withdrawalWalletListProxy?.Execute();
             }
+
+            await ContinueMain();
         }
         catch(ex){
             throw ex;
