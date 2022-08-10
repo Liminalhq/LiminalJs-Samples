@@ -1,6 +1,6 @@
 {
   "name": "@lmnl/liminaljs-typescript",
-  "version": "1.2.0-Beta-5",
+  "version": "1.2.0-beta-22",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,6 @@
     "start:cli": "ts-node-dev --respawn --pretty --transpile-only ./src/Cli/Index.ts",
     "start:aws-configure": "aws configure",
     "start:mpc-setup": "./src/Cli/mpc/install.sh",
-    "start:gw": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Withdrawal/GenerateWalletExample.ts",
     "start:st": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Withdrawal/SendTransactionExample.ts",
     "start:mpc-key": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/GenerateMPCKeyIdExample.ts",
     "start:ga": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/GenerateAddressExample.ts",
@@ -41,7 +40,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@lmnl/liminaljs": "^1.2.0-beta-21",
+    "@lmnl/liminaljs": "^1.2.0-beta-22",
     "@types/cli-color": "^2.0.2",
     "cli-progress": "^3.11.2",
     "inquirer": "^8.2.4"

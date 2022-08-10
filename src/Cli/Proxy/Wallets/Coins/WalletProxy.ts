@@ -17,8 +17,7 @@ export class WalletProxy{
     public async Execute(params:IWalletExecuteOptions): Promise<void>{
         let walletId:number;
         let env:string=process?.env?.ENVIRONMENT;
-        //env="test";
-
+        
         if(env==="test" || env==="dev")
         {
             // Get Co Signer Email Id
@@ -85,6 +84,7 @@ export class WalletProxy{
             });
 
             if(wallet.success===true){
+                
                 console.log(`Wallet Response =>`, JSON.stringify(wallet.data));
                 
                 let walletData=Enumerable.from(wallet.data)
