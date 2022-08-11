@@ -90,3 +90,71 @@ export const IsEnvReady=(): boolean=>{
 
     
 }
+
+export const IsEnvReadyMPC=(coin:string): boolean=>{
+
+    if(coin==="TRX" || coin==="ETH" || coin==="MATIC" || coin==="BNB"){
+        let countBool:Array<boolean>=new Array<boolean>();
+        let counterCondition:number=0;
+
+        let tsmUrl:string=process?.env?.TSM_URL;
+        if(tsmUrl==="YOUR_TSM_URL" || tsmUrl===undefined){
+            countBool.push(false);
+            counterCondition++;
+        }
+        else
+        {
+            countBool.push(true);
+            counterCondition++;
+        }
+
+        let tsmUserId:string=process?.env?.TSM_USER_ID;
+        if(tsmUserId==="YOUR_TSM_USER_ID" || tsmUserId===undefined){
+            countBool.push(false);
+            counterCondition++;
+        }
+        else
+        {
+            countBool.push(true);
+            counterCondition++;
+        }
+
+        let tsmPassword:string=process?.env?.TSM_PASSWORD;
+        if(tsmPassword==="YOUR_TSM_PASSWORD" || tsmPassword===undefined){
+            countBool.push(false);
+            counterCondition++;
+        }
+        else
+        {
+            countBool.push(true);
+            counterCondition++;
+        }
+
+        let tsmPublicKey:string=process?.env?.TSM_PUBLIC_KEY;
+        if(tsmPublicKey==="YOUR_TSM_PUBLIC_KEY" || tsmPublicKey===undefined){
+            countBool.push(false);
+            counterCondition++;
+        }
+        else
+        {
+            countBool.push(true);
+            counterCondition++;
+        }
+
+        let countFlag:number=Enumerable.from(countBool)
+                                    .where((element)=> element===true)
+                                    .count();
+    
+        if(countFlag===counterCondition){
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return true;
+    }
+}

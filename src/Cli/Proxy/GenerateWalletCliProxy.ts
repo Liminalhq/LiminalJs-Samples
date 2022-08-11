@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
 import PromptUI from "inquirer/lib/ui/prompt";
-import { ContinueMain } from "../Shared/CLI/ContinueMain";
+import { ContinueWallet } from "../Shared/CLI/ContinueWallet";
 import { IsEnvReady } from "../Shared/IsEnvReady";
 import { DepositWalletListProxy } from "./Wallets/Lists/DepositWalletListProxy";
 import { WithdrawalWalletListProxy } from "./Wallets/Lists/WithdrawalWalletListProxy";
@@ -32,7 +32,7 @@ export class GenerateWalletCliProxy{
     public async Execute(): Promise<void>{
         try
         {
-
+            
             let flag:boolean=IsEnvReady();
 
             if(flag===false){
@@ -52,8 +52,9 @@ export class GenerateWalletCliProxy{
                 let withdrawalWalletListProxy:WithdrawalWalletListProxy=new WithdrawalWalletListProxy();
                     await withdrawalWalletListProxy?.Execute();
             }
+            
 
-            await ContinueMain();
+            await ContinueWallet();
         }
         catch(ex){
             throw ex;

@@ -2,6 +2,7 @@ import PromptUI from "inquirer/lib/ui/prompt";
 import inquirer from "inquirer";
 import { CoinsEnum, WalletType } from "@lmnl/liminaljs";
 import { WalletProxy } from "../Coins/WalletProxy";
+import { IsEnvReadyMPC } from "../../../Shared/IsEnvReady";
 
 export class DepositWalletListProxy{
     
@@ -46,11 +47,22 @@ export class DepositWalletListProxy{
            let coinRaw:string=String(answer?.deposit)?.toLowerCase(); // get coin name from the List;
            let coin:CoinsEnum=CoinsEnum[coinRaw];
 
-           let depositWalletProxy:WalletProxy=new WalletProxy();
-               await depositWalletProxy.Execute({
-                coin:coin,
-                walletType:WalletType.Deposit
-               });
+           let isMPCEnvReady:boolean=IsEnvReadyMPC(coinRaw.toUpperCase());
+
+           if(isMPCEnvReady===true){
+
+            let depositWalletProxy:WalletProxy=new WalletProxy();
+                await depositWalletProxy.Execute({
+                    coin:coin,
+                    walletType:WalletType.Deposit
+                });
+
+           }
+           else
+           {
+                throw new Error(`Missing .env data`);
+           }
+           
         }
         catch(ex)
         {

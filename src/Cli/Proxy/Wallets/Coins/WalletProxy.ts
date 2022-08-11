@@ -2,7 +2,6 @@ import { CoinsEnum, CreateWalletResultDataWrapper, LiminalEnvironment, WalletTyp
 import Enumerable from "linq";
 import { CreateWalletAsync } from "../../../../Helpers/CreateWallet";
 import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
-import { ContinueMain } from "../../../Shared/CLI/ContinueMain";
 import { GetCoSignersEmailIds } from "../../../Shared/CLI/CoSignersEmailIdInput";
 import { WriteEnvToFile } from "../../../Shared/SaveEnv";
 var clc = require("cli-color");
