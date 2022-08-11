@@ -21,10 +21,9 @@ export class WalletProxy{
         if(env==="test" || env==="dev")
         {
             // Get Co Signer Email Id
-            //let coSignerEmailId:string[]=await GetCoSignersEmailIds();
             walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, []);
         }
-        else(env==="prod")
+        else if(env==="prod")
         {
             // Get Co Signer Email Id
             let coSignerEmailId:string[]=await GetCoSignersEmailIds();
@@ -57,8 +56,6 @@ export class WalletProxy{
             }
             
         }
-
-        await ContinueMain();
     }
 
     private async CreatePipelineWalletAsync(coin:CoinsEnum, walletType:WalletType,coSignerEmailId?:string[]):Promise<number>{
@@ -92,7 +89,13 @@ export class WalletProxy{
                                          
                 if(walletData!==undefined){
 
-                    return walletData.walletId;
+                    if(walletData?.walletId!==-1){
+                        return walletData.walletId;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
                 else
                 {

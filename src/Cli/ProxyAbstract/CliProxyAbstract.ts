@@ -39,6 +39,5 @@ export const CliProxyAbstractAsync=async(params:ICliProxyAbstractOption): Promis
         );
 
         await ContinueMain();
-
     }
 }

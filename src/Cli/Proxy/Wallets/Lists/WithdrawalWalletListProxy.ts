@@ -25,7 +25,10 @@ export class WithdrawalWalletListProxy{
                                         'MATIC',
                                         'TRX',
                                         'XRP',
-                                        'BNB'
+                                        'BNB',
+                                        'UMLG',
+                                        'UATOM',
+                                        "BCH"
                                     ],
                                     
                                 }
