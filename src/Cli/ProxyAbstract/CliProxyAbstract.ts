@@ -21,6 +21,9 @@ export const CliProxyAbstractAsync=async(params:ICliProxyAbstractOption): Promis
             let quickOnboarding=new QuickOnboardingCliProxy();
                 await quickOnboarding?.Execute();
         }
+        else if(params?.command?.Option==="Quick Onboarding-MPC"){
+            
+        }
         else if(params?.command?.Option==="Generate Wallet"){
 
             let generateWallet=new GenerateWalletCliProxy();

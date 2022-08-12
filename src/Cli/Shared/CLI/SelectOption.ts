@@ -11,6 +11,7 @@ import { CliProxyAbstractAsync } from '../../ProxyAbstract/CliProxyAbstract';
                             message: 'What do you want to do?',
                             choices: [
                                 'Quick Onboarding',
+                                //'Quick Onboarding-MPC',
                                 'Generate Wallet',
                                 'Close CLI'
                             ],
