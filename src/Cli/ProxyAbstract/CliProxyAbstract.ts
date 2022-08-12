@@ -1,6 +1,7 @@
 import { CloseCliProxy } from "../Proxy/CloseCliProxy";
 import { GenerateWalletCliProxy } from "../Proxy/GenerateWalletCliProxy";
 import { QuickOnboardingCliProxy } from "../Proxy/QuickOnboardingCliProxy";
+import { QuickOnboardingMPCCliProxy } from "../Proxy/QuickOnboardingMPCCliProxy";
 import { ContinueMain } from "../Shared/CLI/ContinueMain";
 let clc=require("cli-color")
 
@@ -23,6 +24,8 @@ export const CliProxyAbstractAsync=async(params:ICliProxyAbstractOption): Promis
         }
         else if(params?.command?.Option==="Quick Onboarding-MPC"){
             
+            let quickOnboardingMPC=new QuickOnboardingMPCCliProxy();
+                await quickOnboardingMPC?.Execute();
         }
         else if(params?.command?.Option==="Generate Wallet"){
 

@@ -7,73 +7,79 @@ import { WriteEnvToFile } from "../Shared/SaveEnv";
 export class GeneratePublicSignerKeyCliProxy{
    
 
-    public async Execute(): Promise<void>{
+    public async Execute(cloudProviderName:string): Promise<void>{
         try
         {
             Header("Generate Public Signer Key");
 
             let liminalJs:LiminalJs;
-            
-            liminalJs=await LiminalAuthAsync({
-                liminalOptions:{
-                    clientId:process?.env?.CLIENT_ID,
-                    clientSecret:process?.env?.CLIENT_SECRET_ID
-                },
-                env:LiminalEnvironment[process?.env?.ENVIRONMENT]
-            });
-            
+            let response:GetSignerPublicKeyResultDataWrapper[];
 
-            // // Save KMS Key and Aws Region Name
-            WriteEnvToFile([
-                {
-                    key:"PROVIDER_NAME",
-                    value:"AWS"
-                }
-            ]);
-           
-            process.env.PROVIDER_NAME="AWS";
-            //console.log(`region => ${process?.env?.REGION}`);
+            if(cloudProviderName==="AWS"){
 
-            
-            let response:GetSignerPublicKeyResultDataWrapper[]=await GetSignerPublicKeyAsync({
-                liminalJs:liminalJs,
-                cloudProvider:CloudProvider[process?.env?.PROVIDER_NAME],
-            });
-            
-            console.log(`Signer Public Key Response [${process?.env?.PROVIDER_NAME}] => ${JSON.stringify(response)}`);
-            /*
-            //Save KMS Key and Aws Region Name
-            WriteEnvToFile([
-                {
-                    key:"PROVIDER_NAME",
-                    value:"MPC"
-                }
-            ]);
+                liminalJs=await LiminalAuthAsync({
+                    liminalOptions:{
+                        clientId:process?.env?.CLIENT_ID,
+                        clientSecret:process?.env?.CLIENT_SECRET_ID
+                    },
+                    env:LiminalEnvironment[process?.env?.ENVIRONMENT]
+                });
+                
+    
+                // // Save KMS Key and Aws Region Name
+                WriteEnvToFile([
+                    {
+                        key:"PROVIDER_NAME",
+                        value:"AWS"
+                    }
+                ]);
+               
+                process.env.PROVIDER_NAME="AWS";
+                //console.log(`region => ${process?.env?.REGION}`);
+    
+                
+                response=await GetSignerPublicKeyAsync({
+                    liminalJs:liminalJs,
+                    cloudProvider:CloudProvider[process?.env?.PROVIDER_NAME],
+                });
+                
+                console.log(`Signer Public Key Response [${process?.env?.PROVIDER_NAME}] => ${JSON.stringify(response)}`);
 
-            process.env.PROVIDER_NAME="MPC";
+            }
+            else if(cloudProviderName==="MPC"){
 
-            liminalJs=await LiminalAuthAsync({
-                liminalOptions:{
-                    clientId:process?.env?.CLIENT_ID,
-                    clientSecret:process?.env?.CLIENT_SECRET_ID
-                },
-                env:LiminalEnvironment[process?.env?.ENVIRONMENT]
-            });
+                //Save KMS Key and Aws Region Name
+                WriteEnvToFile([
+                    {
+                        key:"PROVIDER_NAME",
+                        value:"MPC"
+                    }
+                ]);
 
-            response=await GetSignerPublicKeyAsync({
-                liminalJs:liminalJs,
-                cloudProvider:CloudProvider[process?.env?.PROVIDER_NAME],  // it should be MPC
-                tsmCred:{
-                    url:process?.env?.TSM_URL,
-                    userID:process?.env?.TSM_USER_ID,
-                    password:process?.env?.TSM_PASSWORD,
-                    publicKey:process?.env?.TSM_PUBLIC_KEY
-                } 
-            });
+                process.env.PROVIDER_NAME="MPC";
+
+                liminalJs=await LiminalAuthAsync({
+                    liminalOptions:{
+                        clientId:process?.env?.CLIENT_ID,
+                        clientSecret:process?.env?.CLIENT_SECRET_ID
+                    },
+                    env:LiminalEnvironment[process?.env?.ENVIRONMENT]
+                });
+
+                response=await GetSignerPublicKeyAsync({
+                    liminalJs:liminalJs,
+                    cloudProvider:CloudProvider[process?.env?.PROVIDER_NAME],  // it should be MPC
+                    tsmCred:{
+                        url:process?.env?.TSM_URL,
+                        userID:process?.env?.TSM_USER_ID,
+                        password:process?.env?.TSM_PASSWORD,
+                        publicKey:process?.env?.TSM_PUBLIC_KEY
+                    } 
+                });
         
-            //console.log(`Signer Public Key Response [${process?.env?.PROVIDER_NAME}] => ${JSON.stringify(response)}`);
-            */
+                console.log(`Signer Public Key Response [${process?.env?.PROVIDER_NAME}] => ${JSON.stringify(response)}`);
 
+            }
         }
         catch(ex){
             throw ex;
