@@ -11,7 +11,7 @@ export class GeneratePublicSignerKeyCliProxy{
         try
         {
             Header("Generate Public Signer Key");
-
+            
             let liminalJs:LiminalJs;
             let response:GetSignerPublicKeyResultDataWrapper[];
 
@@ -76,7 +76,9 @@ export class GeneratePublicSignerKeyCliProxy{
                         publicKey:process?.env?.TSM_PUBLIC_KEY
                     } 
                 });
-        
+                let jsonValue:string=JSON.stringify(response);
+                console.log(jsonValue);
+
                 console.log(`Signer Public Key Response [${process?.env?.PROVIDER_NAME}] => ${JSON.stringify(response)}`);
 
             }

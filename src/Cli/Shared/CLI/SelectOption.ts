@@ -18,14 +18,11 @@ import { CliProxyAbstractAsync } from '../../ProxyAbstract/CliProxyAbstract';
                         }
                         ]);
 
-
         let answer=await question;
 
         await CliProxyAbstractAsync({
             command:answer
         });
-
-       
     }
     catch(ex)
     {

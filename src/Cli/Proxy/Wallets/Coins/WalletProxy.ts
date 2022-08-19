@@ -81,7 +81,18 @@ export class WalletProxy{
 
             if(wallet.success===true){
                 
-                console.log(`Wallet Response => ${JSON.stringify(wallet.data)}`);
+                for(let walletData of wallet.data){
+                    
+                    console.log(`############################################################`);
+                    console.log(`Wallet Id => ${walletData?.walletId}`);
+                    console.log(`Wallet Address => ${walletData?.walletAddress}`);
+                    console.log(`Wallet Type => ${walletData?.type}`);
+                    console.log(`Wallet Type => ${walletData?.subType}`);
+                    console.log(`Wallet Chain => ${walletData?.chain}`);
+                    console.log(`Wallet Coin => ${walletData?.coin}`);
+                    console.log(`Wallet ParentChain => ${walletData?.parentChain}`);
+                    console.log(`Wallet Message => ${walletData?.message}`);
+                }
                 
                 let walletData=Enumerable.from(wallet.data)
                                          .firstOrDefault((element)=>element.chain==="ETH" && element.coin==="ETH");

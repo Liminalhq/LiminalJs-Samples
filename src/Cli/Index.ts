@@ -32,12 +32,11 @@ const main=async():Promise<void>=>{
 //       });
 
 //     }, 1000);
-
     clear();
-    Banner();
-    await SelectOption();
 
-     
+    Banner();
+    
+    await SelectOption();
   }
   catch(ex)
   {
