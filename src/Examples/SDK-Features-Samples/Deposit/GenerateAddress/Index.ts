@@ -1,12 +1,12 @@
 import { AddressType, CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
-import { GenerateAddressAsync } from "../../Helpers/GenerateAddress";
-import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
-import { WalletInstanceAsync } from "../../Helpers/WalletInstance";
-import { clientId, clientSecretId, depositWalletId, env } from "../../Settings";
+import { GenerateAddressAsync } from "../../../../Helpers/GenerateAddress";
+import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
+import { WalletInstanceAsync } from "../../../../Helpers/WalletInstance";
+import { clientId, clientSecretId, depositWalletId, env } from "../../../../Settings";
 
 
 /**
- * Run Command => npm run start:ga
+ * Run Command => npm run start:ga-deposit
  * Docs => https://docs.lmnl.app/docs/generate-address
  */
 export const main=async():Promise<void>=>{
@@ -25,8 +25,8 @@ export const main=async():Promise<void>=>{
         // Step 2: Get Wallet Instance
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
-            coin:CoinsEnum.eth,
-            walletId:Number(depositWalletId)
+            coin:CoinsEnum.eth, // Define your coin here.
+            walletId:Number(depositWalletId) // Define your coin wallet id here
         });
 
         // Step 3 Generate Address

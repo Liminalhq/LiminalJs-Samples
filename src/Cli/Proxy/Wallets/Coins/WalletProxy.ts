@@ -2,7 +2,6 @@ import { CoinsEnum, CreateWalletResultDataWrapper, LiminalEnvironment, WalletTyp
 import Enumerable from "linq";
 import { CreateWalletAsync } from "../../../../Helpers/CreateWallet";
 import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
-import { ContinueMain } from "../../../Shared/CLI/ContinueMain";
 import { GetCoSignersEmailIds } from "../../../Shared/CLI/CoSignersEmailIdInput";
 import { WriteEnvToFile } from "../../../Shared/SaveEnv";
 var clc = require("cli-color");
@@ -21,7 +20,7 @@ export class WalletProxy{
         if(env==="test" || env==="dev")
         {
             // Get Co Signer Email Id
-            walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, []);
+            walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app,mansi@lmnl.app"]);
         }
         else if(env==="prod")
         {
@@ -82,7 +81,18 @@ export class WalletProxy{
 
             if(wallet.success===true){
                 
-                console.log(`Wallet Response =>`, JSON.stringify(wallet.data));
+                for(let walletData of wallet.data){
+                    
+                    console.log(`############################################################`);
+                    console.log(`Wallet Id => ${walletData?.walletId}`);
+                    console.log(`Wallet Address => ${walletData?.walletAddress}`);
+                    console.log(`Wallet Type => ${walletData?.type}`);
+                    console.log(`Wallet Type => ${walletData?.subType}`);
+                    console.log(`Wallet Chain => ${walletData?.chain}`);
+                    console.log(`Wallet Coin => ${walletData?.coin}`);
+                    console.log(`Wallet ParentChain => ${walletData?.parentChain}`);
+                    console.log(`Wallet Message => ${walletData?.message}`);
+                }
                 
                 let walletData=Enumerable.from(wallet.data)
                                          .firstOrDefault((element)=>element.chain==="ETH" && element.coin==="ETH");

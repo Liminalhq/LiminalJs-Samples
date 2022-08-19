@@ -37,7 +37,7 @@ export class QuickOnboardingCliProxy{
             // bar.update(4);
 
             let generatePublicSignerProxyObj=new GeneratePublicSignerKeyCliProxy();
-               await generatePublicSignerProxyObj?.Execute();
+                await generatePublicSignerProxyObj?.Execute("AWS");
 
             bar.update(4);
 

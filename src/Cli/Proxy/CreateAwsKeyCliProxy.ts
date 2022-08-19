@@ -45,7 +45,7 @@ export class CreateAwsKeyCliProxy{
                                 {
                                     type: 'input',
                                     name: 'awsKMS',
-                                    message: 'KSM Key =>',
+                                    message: 'KMS Key =>',
                                     validate(value) {
                                         if(value===undefined || value===null || value===''){
                                             return "AWs KMS is required"
