@@ -20,7 +20,7 @@ export class WalletProxy{
         if(env==="test" || env==="dev")
         {
             // Get Co Signer Email Id
-            walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, []);
+            walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app,mansi@lmnl.app"]);
         }
         else if(env==="prod")
         {
@@ -81,7 +81,7 @@ export class WalletProxy{
 
             if(wallet.success===true){
                 
-                console.log(`Wallet Response =>`, JSON.stringify(wallet.data));
+                console.log(`Wallet Response => ${JSON.stringify(wallet.data)}`);
                 
                 let walletData=Enumerable.from(wallet.data)
                                          .firstOrDefault((element)=>element.chain==="ETH" && element.coin==="ETH");

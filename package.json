@@ -14,8 +14,7 @@
     "start:ct": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/ConsolidateTransactionEVMExample.ts",
     "start:psk-aws": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Initialize/GenerateSignerPublicKey/AWS/GetSignerPublicKeysExample.ts",
     "start:psk-mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Initialize/GenerateSignerPublicKey/MPC/GetSignerPublicKeysExample.ts",
-    "debug:dev1": "ts-node-dev --inspect=4320 --pretty --transpile-only ./src/Cli/Index.ts",
-    "debug:dev": "ts-node-dev --inspect=4321 --pretty --transpile-only ./src/Examples/Initialize/CreateAwsKeyExample.ts",
+    "debug-cli:dev": "ts-node-dev --inspect=4320 --pretty --transpile-only ./src/Cli/Index.ts",
     "build": "tsc -p tsconfig.json"
   },
   "keywords": [],

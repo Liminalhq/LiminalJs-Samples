@@ -94,7 +94,7 @@ export class TSMCredentialsCliProxy{
             if(fs.existsSync(tsm_CredFilePath)){
 
                 let fileContent=readFileSync(tsm_CredFilePath,'utf-8');
-                console.log(fileContent);
+                //console.log(fileContent);
                 let tsmCredData:tsmCreds=JSON.parse(fileContent);
 
                 return tsmCredData;
