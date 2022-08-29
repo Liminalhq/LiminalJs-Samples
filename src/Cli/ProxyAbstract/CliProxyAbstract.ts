@@ -1,7 +1,9 @@
+import { clear } from "console";
 import { CloseCliProxy } from "../Proxy/CloseCliProxy";
 import { GenerateWalletCliProxy } from "../Proxy/GenerateWalletCliProxy";
 import { QuickOnboardingCliProxy } from "../Proxy/QuickOnboardingCliProxy";
 import { QuickOnboardingMPCCliProxy } from "../Proxy/QuickOnboardingMPCCliProxy";
+import { Banner } from "../Shared/CLI/Banner";
 import { ContinueMain } from "../Shared/CLI/ContinueMain";
 let clc=require("cli-color")
 
@@ -17,7 +19,7 @@ export const CliProxyAbstractAsync=async(params:ICliProxyAbstractOption): Promis
     try
     {      
 
-        if(params?.command?.Option==="Quick Onboarding")
+        if(params?.command?.Option==="Quick Onboarding-AWS")
         {
             let quickOnboarding=new QuickOnboardingCliProxy();
                 await quickOnboarding?.Execute();
@@ -43,7 +45,7 @@ export const CliProxyAbstractAsync=async(params:ICliProxyAbstractOption): Promis
         console.log(
             clc.red(ex?.message)
         );
-
+        
         await ContinueMain();
     }
 }
