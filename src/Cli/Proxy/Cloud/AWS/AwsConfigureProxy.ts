@@ -1,8 +1,8 @@
 
 import { clear } from "console";
-import { Banner } from "../Shared/CLI/Banner";
-import { Header } from "../Shared/CLI/Header";
-import { StartNPMCommand } from "../Shared/StartNPM";
+import { Banner } from "../../../Shared/CLI/Banner";
+import { Header } from "../../../Shared/CLI/Header";
+import { StartNPMCommand } from "../../../Shared/StartNPM";
 
 
 export class AwsConfigureCliProxy{

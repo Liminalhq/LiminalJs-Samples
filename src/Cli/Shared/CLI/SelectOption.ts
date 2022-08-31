@@ -12,6 +12,7 @@ import { CliProxyAbstractAsync } from '../../ProxyAbstract/CliProxyAbstract';
                             choices: [
                                 'Quick Onboarding-AWS',
                                 'Quick Onboarding-MPC',
+                                'Quick Onboarding-AZURE',
                                 'Generate Wallet',
                                 'Close CLI'
                             ],

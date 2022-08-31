@@ -1,9 +1,9 @@
 import inquirer from "inquirer";
 import PromptUI from "inquirer/lib/ui/prompt";
-import { ContinueWallet } from "../Shared/CLI/ContinueWallet";
-import { IsEnvReady } from "../Shared/IsEnvReady";
-import { DepositWalletListProxy } from "./Wallets/Lists/DepositWalletListProxy";
-import { WithdrawalWalletListProxy } from "./Wallets/Lists/WithdrawalWalletListProxy";
+import { ContinueWallet } from "../../Shared/CLI/ContinueWallet";
+import { IsEnvReady } from "../../Shared/IsEnvReady";
+import { DepositWalletListProxy } from "./Lists/DepositWalletListProxy";
+import { WithdrawalWalletListProxy } from "./Lists/WithdrawalWalletListProxy";
 let clc=require("cli-color");
 export class GenerateWalletCliProxy{
 

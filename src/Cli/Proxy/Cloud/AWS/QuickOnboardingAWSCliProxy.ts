@@ -1,14 +1,12 @@
-import { clear } from "console";
-import { Banner } from "../Shared/CLI/Banner";
-import { ContinueMain } from "../Shared/CLI/ContinueMain";
+import { ContinueMain } from "../../../Shared/CLI/ContinueMain";
 import { AwsConfigureCliProxy } from "./AwsConfigureProxy";
 import { CreateAwsKeyCliProxy } from "./CreateAwsKeyCliProxy";
-import { GeneratePublicSignerKeyCliProxy } from "./GeneratePublicSignerKeyCliProxy";
+import { GeneratePublicSignerKeyCliProxy } from "../../GeneratePublicSignerKeyCliProxy";
 //import { MPCConfigureCliProxy } from "./MPCConfigureCliProxy";
-import { CreateSDKKeyCliProxy } from "./SDKKeyCliProxy";
+import { CreateSDKKeyCliProxy } from "../../SDKKeyCliProxy";
 const cliProgress = require('cli-progress');
 
-export class QuickOnboardingCliProxy{
+export class QuickOnboardingAWSCliProxy{
 
     public async Execute(): Promise<void>{
         const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
@@ -30,11 +28,6 @@ export class QuickOnboardingCliProxy{
                 await createSDKKeyProxyObj?.Execute();
 
             bar.update(3);
-
-            // let tsmCredentialsProxyObj=new TSMCredentialsCliProxy();
-            //     await tsmCredentialsProxyObj?.Execute();
-
-            // bar.update(4);
 
             let generatePublicSignerProxyObj=new GeneratePublicSignerKeyCliProxy();
                 await generatePublicSignerProxyObj?.Execute("AWS");

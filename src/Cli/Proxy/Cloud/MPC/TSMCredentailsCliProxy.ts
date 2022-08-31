@@ -1,11 +1,11 @@
-import { Header } from "../Shared/CLI/Header";
-import { WriteEnvToFile } from "../Shared/SaveEnv";
+import { Header } from "../../../Shared/CLI/Header";
+import { WriteEnvToFile } from "../../../Shared/SaveEnv";
 import fs,{readFileSync} from 'fs';
 import { resolve } from 'path';
 import { tsmCreds } from "@lmnl/liminaljs";
-import { IsEnvReady } from "../Shared/IsEnvReady";
+import { IsEnvReady } from "../../../Shared/IsEnvReady";
 import { clear } from "console";
-import { Banner } from "../Shared/CLI/Banner";
+import { Banner } from "../../../Shared/CLI/Banner";
 export class TSMCredentialsCliProxy{
 
     private GetTSMCredentials():tsmCreds|undefined{

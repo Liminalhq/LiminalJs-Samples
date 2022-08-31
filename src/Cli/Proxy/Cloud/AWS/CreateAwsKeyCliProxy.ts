@@ -2,13 +2,10 @@ import { clear } from "console";
 import { Guid } from "guid-typescript";
 import inquirer from "inquirer";
 import PromptUI from "inquirer/lib/ui/prompt";
-import { CreateAWSKMSKeyAsync } from "../../Helpers/CreateAwsKMSKey";
-import { Banner } from "../Shared/CLI/Banner";
-import { Header } from "../Shared/CLI/Header";
-import * as dotenv from "dotenv";
-import path from "path";
-import { WriteEnvToFile } from "../Shared/SaveEnv";
-import { threadId } from "worker_threads";
+import { CreateAWSKMSKeyAsync } from "../../../../Helpers/CreateAwsKMSKey";
+import { Banner } from "../../../Shared/CLI/Banner";
+import { Header } from "../../../Shared/CLI/Header";
+import { WriteEnvToFile } from "../../../Shared/SaveEnv";
 
 
 export class CreateAwsKeyCliProxy{

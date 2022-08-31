@@ -1,7 +1,8 @@
-import { ContinueMain } from "../Shared/CLI/ContinueMain";
-import { GeneratePublicSignerKeyCliProxy } from "./GeneratePublicSignerKeyCliProxy";
-import { CreateSDKKeyCliProxy } from "./SDKKeyCliProxy";
+import { ContinueMain } from "../../../Shared/CLI/ContinueMain";
+import { GeneratePublicSignerKeyCliProxy } from "../../GeneratePublicSignerKeyCliProxy";
+import { CreateSDKKeyCliProxy } from "../../SDKKeyCliProxy";
 import { TSMCredentialsCliProxy } from "./TSMCredentailsCliProxy";
+
 
 const cliProgress = require('cli-progress');
 

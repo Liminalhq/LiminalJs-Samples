@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:cli": "ts-node-dev --respawn --pretty --transpile-only ./src/Cli/Index.ts",
     "start:aws-configure": "aws configure",
+    "start:azure-configure":"az login",
     "start:mpc-setup": "./src/Cli/mpc/install.sh",
     "start:st": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Withdrawal/SendTransactionExample.ts",
     "start:mpc-key": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Deposit/GenerateMPCKeyIdExample.ts",
