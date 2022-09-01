@@ -40,18 +40,21 @@ export const IsEnvReady=(): boolean=>{
         counterCondition++;
     }
 
-    let region=process?.env?.REGION;
-    if(region==="YOUR_AWS_REGION" || region===undefined || region==="")
+    if(providerName==="AWS")
     {
-        countBool.push(false);
-        counterCondition++;
+        let region=process?.env?.REGION;
+        if(region==="YOUR_AWS_REGION" || region===undefined || region==="")
+        {
+            countBool.push(false);
+            counterCondition++;
+        }
+        else
+        {
+            countBool.push(true);
+            counterCondition++;
+        }
     }
-    else
-    {
-        countBool.push(true);
-        counterCondition++;
-    }
-
+    
     let clientId=process?.env?.CLIENT_ID;
     if(clientId==="YOUR_SDK_CLIENT_ID" || clientId===undefined || clientId==="")
     {

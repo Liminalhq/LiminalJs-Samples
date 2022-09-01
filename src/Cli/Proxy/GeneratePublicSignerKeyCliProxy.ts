@@ -112,6 +112,10 @@ export class GeneratePublicSignerKeyCliProxy{
                 
                 console.log(`Signer Public Key Response [${process?.env?.PROVIDER_NAME}] => ${JSON.stringify(response)}`);
             }
+            else
+            {
+                throw new Error(`Cloud Provider not found`);
+            }
         }
         catch(ex){
             throw ex;

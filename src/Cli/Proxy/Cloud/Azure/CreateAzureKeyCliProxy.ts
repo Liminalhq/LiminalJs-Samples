@@ -86,6 +86,7 @@ export class CreateAzureKeyCliProxy{
                 this.InputsAzureKMS();
 
                 let answer=await this.question;
+
                 kmsKeyId=answer?.azureKMS;
                 azureKeyVaultUrl=answer?.azureKeyVaultUrl;
             }

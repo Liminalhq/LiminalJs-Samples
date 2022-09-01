@@ -1,3 +1,5 @@
+import { clear } from "console";
+import { Banner } from "../../../Shared/CLI/Banner";
 import { ContinueMain } from "../../../Shared/CLI/ContinueMain";
 import { GeneratePublicSignerKeyCliProxy } from "../../GeneratePublicSignerKeyCliProxy";
 import { CreateSDKKeyCliProxy } from "../../SDKKeyCliProxy";
@@ -40,6 +42,9 @@ export class QuickOnboardingAzureCliProxy{
             bar.update(4);
 
             bar.stop();
+
+            clear();
+            Banner();
 
             await ContinueMain();
         }

@@ -4,6 +4,8 @@ import { CreateAwsKeyCliProxy } from "./CreateAwsKeyCliProxy";
 import { GeneratePublicSignerKeyCliProxy } from "../../GeneratePublicSignerKeyCliProxy";
 //import { MPCConfigureCliProxy } from "./MPCConfigureCliProxy";
 import { CreateSDKKeyCliProxy } from "../../SDKKeyCliProxy";
+import { clear } from "console";
+import { Banner } from "../../../Shared/CLI/Banner";
 const cliProgress = require('cli-progress');
 
 export class QuickOnboardingAWSCliProxy{
@@ -35,6 +37,9 @@ export class QuickOnboardingAWSCliProxy{
             bar.update(4);
 
             bar.stop();
+
+            clear();
+            Banner();
 
             await ContinueMain();
         }

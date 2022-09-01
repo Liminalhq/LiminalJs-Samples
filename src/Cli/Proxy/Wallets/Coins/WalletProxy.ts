@@ -20,12 +20,13 @@ export class WalletProxy{
         if(env==="test" || env==="dev")
         {
             // Get Co Signer Email Id
-            if(params?.walletType===WalletType.Deposit){
-                walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app","mansi@lmnl.app"]);
+            if(params?.walletType===WalletType.Deposit)
+            {
+                walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app","riya@lmnl.app"]);
             }
             else if(params?.walletType===WalletType.Withdrawal)
             {
-                walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app","riya@lmnl.app"]);
+                walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app","mansi@lmnl.app"]);
             }
             
         }
