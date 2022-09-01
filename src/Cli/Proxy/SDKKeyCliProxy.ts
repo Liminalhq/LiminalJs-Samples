@@ -3,6 +3,7 @@ import inquirer from "inquirer";
 import PromptUI from "inquirer/lib/ui/prompt";
 import { Banner } from "../Shared/CLI/Banner";
 import { Header } from "../Shared/CLI/Header";
+import { IsSDKKeyEnvReady } from "../Shared/IsEnvReady";
 import { WriteEnvToFile } from "../Shared/SaveEnv";
 
 export class CreateSDKKeyCliProxy{
@@ -65,32 +66,36 @@ export class CreateSDKKeyCliProxy{
 
             Header("Add SDK Key");
 
-            this.Inputs();
+            let flag:boolean=IsSDKKeyEnvReady();
 
-            let answer=await this.question;
+            if(flag===false)
+            {
+                this.Inputs();
+
+                let answer=await this.question;
+
+                //Save KMS Key and Aws Region Name
+                WriteEnvToFile([
+                    {
+                        key:"ENVIRONMENT",
+                        value:answer?.env
+                    },
+                    {
+                        key:"CLIENT_ID",
+                        value:answer?.clientId
+                    },
+                    {
+                        key:"CLIENT_SECRET_ID",
+                        value:answer?.clientSecretId
+                    }
+                ]);
             
-            //Save KMS Key and Aws Region Name
-            WriteEnvToFile([
-                {
-                    key:"ENVIRONMENT",
-                    value:answer?.env
-                },
-                {
-                    key:"CLIENT_ID",
-                    value:answer?.clientId
-                },
-                {
-                    key:"CLIENT_SECRET_ID",
-                    value:answer?.clientSecretId
-                }
-            ]);
-           
-            process.env.ENVIRONMENT=answer?.env;
-            process.env.CLIENT_ID=answer?.clientId;
-            process.env.CLIENT_SECRET_ID=answer?.clientSecretId;
+                process.env.ENVIRONMENT=answer?.env;
+                process.env.CLIENT_ID=answer?.clientId;
+                process.env.CLIENT_SECRET_ID=answer?.clientSecretId;
+            }
 
             clear();
-
             Banner();
         }
         catch(ex){

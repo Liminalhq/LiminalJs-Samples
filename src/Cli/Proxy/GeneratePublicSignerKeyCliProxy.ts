@@ -82,21 +82,71 @@ export class GeneratePublicSignerKeyCliProxy{
                 console.log(`Signer Public Key Response [${process?.env?.PROVIDER_NAME}] => ${JSON.stringify(response)}`);
 
             }
+            else if(cloudProviderName==="AZURE"){
+
+                liminalJs=await LiminalAuthAsync({
+                    liminalOptions:{
+                        clientId:process?.env?.CLIENT_ID,
+                        clientSecret:process?.env?.CLIENT_SECRET_ID
+                    },
+                    env:LiminalEnvironment[process?.env?.ENVIRONMENT]
+                });
+                
+    
+                // // Save KMS Key and Aws Region Name
+                WriteEnvToFile([
+                    {
+                        key:"PROVIDER_NAME",
+                        value:"AZURE"
+                    }
+                ]);
+               
+                process.env.PROVIDER_NAME="AZURE";
+                //console.log(`region => ${process?.env?.REGION}`);
+    
+                
+                response=await GetSignerPublicKeyAsync({
+                    liminalJs:liminalJs,
+                    cloudProvider:CloudProvider[process?.env?.PROVIDER_NAME],
+                });
+                
+                console.log(`Signer Public Key Response [${process?.env?.PROVIDER_NAME}] => ${JSON.stringify(response)}`);
+            }
+            else
+            {
+                throw new Error(`Cloud Provider not found`);
+            }
         }
         catch(ex){
             throw ex;
         }
         finally
         {
-            WriteEnvToFile([
-                {
-                    key:"PROVIDER_NAME",
-                    value:"AWS"
-                }
-            ]);
-            
-            process.env.PROVIDER_NAME="AWS";
 
+            if(cloudProviderName==="AZURE"){
+                WriteEnvToFile([
+                    {
+                        key:"PROVIDER_NAME",
+                        value:"AZURE"
+                    }
+                ]);
+                
+                process.env.PROVIDER_NAME="AZURE";
+    
+            }
+            else
+            {
+                WriteEnvToFile([
+                    {
+                        key:"PROVIDER_NAME",
+                        value:"AWS"
+                    }
+                ]);
+                
+                process.env.PROVIDER_NAME="AWS";
+    
+            }
+            
         }
     }
 }

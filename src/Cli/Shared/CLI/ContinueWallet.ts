@@ -1,5 +1,5 @@
 import inquirer from 'inquirer';
-import { GenerateWalletCliProxy } from '../../Proxy/GenerateWalletCliProxy';
+import { GenerateWalletCliProxy } from '../../Proxy/Wallets/GenerateWalletCliProxy';
 import { Banner } from './Banner';
 import { SelectOption } from './SelectOption';
 
