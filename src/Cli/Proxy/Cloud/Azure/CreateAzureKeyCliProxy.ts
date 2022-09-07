@@ -92,6 +92,18 @@ export class CreateAzureKeyCliProxy{
             }
 
             // Save KMS key and Key Vault Url
+          
+
+            process.env.DEFAULT_KEY_ID=kmsKeyId;
+            process.env.AZURE_KEY_VAULT_URL=azureKeyVaultUrl;
+            process.env.PROVIDER_NAME="AZURE";
+
+            clear();
+
+            Banner();
+        }
+        catch(ex)
+        {
             WriteEnvToFile([
                 {
                     key:"DEFAULT_KEY_ID",
@@ -106,17 +118,6 @@ export class CreateAzureKeyCliProxy{
                     value:"AZURE"
                 }
             ]);
-
-            process.env.DEFAULT_KEY_ID=kmsKeyId;
-            process.env.AZURE_KEY_VAULT_URL=azureKeyVaultUrl;
-            process.env.PROVIDER_NAME="AZURE";
-
-            clear();
-
-            Banner();
-        }
-        catch(ex)
-        {
             throw ex;
         }
     }

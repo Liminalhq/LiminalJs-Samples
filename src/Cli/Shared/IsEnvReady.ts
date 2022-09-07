@@ -28,17 +28,17 @@ export const IsEnvReady=(): boolean=>{
         counterCondition++;
     }
 
-    let keyId=process?.env?.DEFAULT_KEY_ID;
-    if(keyId==="YOUR_KMS_DEFAULT_KEY_ID" || keyId===undefined || keyId==="")
-    {
-        countBool.push(false);
-        counterCondition++;
-    }
-    else
-    {
-        countBool.push(true);
-        counterCondition++;
-    }
+    // let keyId=process?.env?.DEFAULT_KEY_ID;
+    // if(keyId==="YOUR_KMS_DEFAULT_KEY_ID" || keyId===undefined || keyId==="")
+    // {
+    //     countBool.push(false);
+    //     counterCondition++;
+    // }
+    // else
+    // {
+    //     countBool.push(true);
+    //     counterCondition++;
+    // }
 
     if(providerName==="AWS")
     {
