@@ -4,6 +4,9 @@ import { WalletInstanceAsync } from "../../Helpers/WalletInstance";
 import { ConsolidateTransactionAsync } from "../../Integration/ConsolidateTransactionEVM";
 import { clientId, clientSecretId, depositWalletId, env, targetAddress, tsmCred } from "../../Settings";
 
+/**
+ * Run Command : npm run start:ct
+ */
 
 export const main=async():Promise<void>=>{
 

@@ -6,7 +6,9 @@ import { ResendTransaction } from "../../Integration/ResendTransaction";
 import { SendTransaction } from "../../Integration/SendTransaction";
 import { clientId, clientSecretId, env, withdrawalWalletId } from "../../Settings";
 
-
+/**
+ * Run Command : npm run start:st
+ */
 
 const main=async():Promise<void>=>{
 
