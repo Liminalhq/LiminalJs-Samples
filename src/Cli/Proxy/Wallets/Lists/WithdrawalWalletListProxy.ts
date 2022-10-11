@@ -28,7 +28,8 @@ export class WithdrawalWalletListProxy{
                                         'BNB',
                                         'UMLG',
                                         'UATOM',
-                                        "BCH"
+                                        "BCH",
+                                        "DOGE"
                                     ],
                                     
                                 }

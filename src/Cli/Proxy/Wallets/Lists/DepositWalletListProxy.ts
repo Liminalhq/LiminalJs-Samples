@@ -29,7 +29,8 @@ export class DepositWalletListProxy{
                                         'BNB',
                                         "UMLG",
                                         "UATOM",
-                                        "BCH"
+                                        "BCH",
+                                        "DOGE"
                                     ],
                                     
                                 }
