@@ -134,7 +134,7 @@ export class GeneratePublicSignerKeyCliProxy{
                 process.env.PROVIDER_NAME="AZURE";
     
             }
-            else
+            else if(cloudProviderName==="AWS")
             {
                 WriteEnvToFile([
                     {
@@ -144,6 +144,18 @@ export class GeneratePublicSignerKeyCliProxy{
                 ]);
                 
                 process.env.PROVIDER_NAME="AWS";
+    
+            }
+            else if(cloudProviderName==="MPC")
+            {
+                WriteEnvToFile([
+                    {
+                        key:"PROVIDER_NAME",
+                        value:"MPC"
+                    }
+                ]);
+                
+                process.env.PROVIDER_NAME="MPC";
     
             }
             

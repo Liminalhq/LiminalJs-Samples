@@ -28,20 +28,21 @@ export const IsEnvReady=(): boolean=>{
         counterCondition++;
     }
 
-    let keyId=process?.env?.DEFAULT_KEY_ID;
-    if(keyId==="YOUR_KMS_DEFAULT_KEY_ID" || keyId===undefined || keyId==="")
+    if(providerName==="AWS" || providerName==="AZURE")
     {
-        countBool.push(false);
-        counterCondition++;
-    }
-    else
-    {
-        countBool.push(true);
-        counterCondition++;
-    }
 
-    if(providerName==="AWS")
-    {
+        let keyId=process?.env?.DEFAULT_KEY_ID;
+        if(keyId==="YOUR_KMS_DEFAULT_KEY_ID" || keyId===undefined || keyId==="")
+        {
+            countBool.push(false);
+            counterCondition++;
+        }
+        else
+        {
+            countBool.push(true);
+            counterCondition++;
+        }
+
         let region=process?.env?.REGION;
         if(region==="YOUR_AWS_REGION" || region===undefined || region==="")
         {
