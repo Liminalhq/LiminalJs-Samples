@@ -40,6 +40,12 @@ export class WithdrawalWalletListProxy{
     public async Execute(): Promise<void>{
         try
         {
+           let providerName=process?.env?.PROVIDER_NAME;
+           if(providerName==="MPC")
+           {
+                throw new Error(`Creation of withdrawal wallet using MPC is not supported. Kindly run Quick Onboarding AWS or Azure Command from the main menu.`);
+           }
+
            this.Inputs();
 
            let answer=await this.question;
@@ -47,22 +53,11 @@ export class WithdrawalWalletListProxy{
            let coinRaw:string=String(answer?.withdrawal)?.toLowerCase(); // get coin name from the List;
            let coin:CoinsEnum=CoinsEnum[coinRaw];
 
-           let providerName=process?.env?.PROVIDER_NAME;
-
-           if(providerName!="MPC"){
-
-            let withDrawalWalletProxy:WalletProxy=new WalletProxy();
+           let withDrawalWalletProxy:WalletProxy=new WalletProxy();
                await withDrawalWalletProxy.Execute({
                 coin:coin,
                 walletType:WalletType.Withdrawal
-               }); 
-           }
-           else
-           {
-                throw new Error(`Creation of withdrawal wallet not supported using MPC`);
-           }
-
-           
+            });    
         }
         catch(ex)
         {

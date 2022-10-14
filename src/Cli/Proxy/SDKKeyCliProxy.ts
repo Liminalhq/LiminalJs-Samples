@@ -2,7 +2,7 @@ import { clear } from "console";
 import inquirer from "inquirer";
 import PromptUI from "inquirer/lib/ui/prompt";
 import { Banner } from "../Shared/CLI/Banner";
-import { Header } from "../Shared/CLI/Header";
+import { Header, InputWarningMessage } from "../Shared/CLI/Header";
 import { IsSDKKeyEnvReady } from "../Shared/IsEnvReady";
 import { WriteEnvToFile } from "../Shared/SaveEnv";
 
@@ -65,6 +65,7 @@ export class CreateSDKKeyCliProxy{
         {
 
             Header("Add SDK Key");
+            InputWarningMessage();
 
             let flag:boolean=IsSDKKeyEnvReady();
 
