@@ -20,7 +20,6 @@ export class WithdrawalWalletListProxy{
                                     choices: [
                                         'BTC',
                                         'LTC',
-                                        'BSC',
                                         'ETH',
                                         'MATIC',
                                         'TRX',
