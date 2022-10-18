@@ -42,7 +42,7 @@ export class WithdrawalWalletListProxy{
            let providerName=process?.env?.PROVIDER_NAME;
            if(providerName==="MPC")
            {
-                throw new Error(`Creation of withdrawal wallet using MPC is not supported. Kindly run Quick Onboarding AWS or Azure Command from the main menu.`);
+                throw new Error(`Creation of withdrawal wallet using MPC is not supported. Kindly run Quick Onboarding AWS or Azure Command from the main menu Or If you are already onboarded through AWS or Azure then close the CLI and then change the provider name from "MPC" to "AWS" or "Azure" in the .env file.`);
            }
 
            this.Inputs();
