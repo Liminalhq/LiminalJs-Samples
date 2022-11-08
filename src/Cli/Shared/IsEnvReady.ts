@@ -30,7 +30,6 @@ export const IsEnvReady=(): boolean=>{
 
     if(providerName==="AWS" || providerName==="AZURE")
     {
-
         let keyId=process?.env?.DEFAULT_KEY_ID;
         if(keyId==="YOUR_KMS_DEFAULT_KEY_ID" || keyId===undefined || keyId==="")
         {
