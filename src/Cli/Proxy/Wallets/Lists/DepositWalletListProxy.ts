@@ -21,7 +21,6 @@ export class DepositWalletListProxy{
                                     choices: [
                                         'BTC',
                                         'LTC',
-                                        'BSC',
                                         'ETH',
                                         'MATIC',
                                         'TRX',
@@ -29,7 +28,8 @@ export class DepositWalletListProxy{
                                         'BNB',
                                         "UMLG",
                                         "UATOM",
-                                        "BCH"
+                                        "BCH",
+                                        "DOGE"
                                     ],
                                     
                                 }

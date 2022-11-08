@@ -1,13 +1,7 @@
-import { GetBalanceResultDataWrapper, Wallet } from "@lmnl/liminaljs";
-import { Pagination, TransferTransactionRequestResult, TransferTransactionWrapper } from "@lmnl/liminaljs";
-import { SendManyOptions, SubmitOptions } from "@lmnl/liminaljs";
-import { CloudProvider, LiminalJs, GetSignerPublicKeyResultDataWrapper, tsmCreds } from "@lmnl/liminaljs";
+import { LiminalJs, TransferTransactionRequestResult} from "@lmnl/liminaljs";
 import { sleep, LiminalEnvironment, CoinsEnum } from "@lmnl/liminaljs";
 import { Guid } from "guid-typescript";
-import { TransactionStatusAsync } from "./TransactionStatus";
-
-
-
+import { TransactionStatusAsync } from "../Helpers/TransactionStatus";
 
 const main = async () => {
     try {
@@ -61,4 +55,4 @@ const main = async () => {
         throw ex;
     }
 };
-main().then((resolve) => console.log("Complete")).catch((error) => console.log(error));
+main().then((resolve) => console.log("Complete")).catch((error) => console.log(error.message));

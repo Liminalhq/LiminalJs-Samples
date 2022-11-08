@@ -1,4 +1,4 @@
-import { Header } from "../../../Shared/CLI/Header";
+import { Header, InputWarningMessage } from "../../../Shared/CLI/Header";
 import { WriteEnvToFile } from "../../../Shared/SaveEnv";
 import fs,{readFileSync} from 'fs';
 import { resolve } from 'path';
@@ -79,7 +79,7 @@ export class TSMCredentialsCliProxy{
                                          }
                                     }
                                     
-                                },
+                                }
                                 
                             ]
                         );
@@ -93,7 +93,6 @@ export class TSMCredentialsCliProxy{
             
             // check if file exists or not.
             if(fs.existsSync(tsm_CredFilePath)){
-
                 let fileContent=readFileSync(tsm_CredFilePath,'utf-8');
                 //console.log(fileContent);
                 let tsmCredData:tsmCreds=JSON.parse(fileContent);
@@ -115,8 +114,8 @@ export class TSMCredentialsCliProxy{
     public async Execute(): Promise<void>{
         try
         {
-           
             Header("Add TSM Credentials");
+            InputWarningMessage();
             
             let isEnvReady:boolean=IsSDKKeyEnvReady();
 
@@ -126,7 +125,6 @@ export class TSMCredentialsCliProxy{
 
                 // If tsm_cred json file not found then take inputs from the users.
                 if(tsmCred===undefined){
-
                     this.Inputs();
 
                     let answer=await this.question;
