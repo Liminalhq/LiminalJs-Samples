@@ -41,6 +41,8 @@ const main=async():Promise<void>=>{
     // });
 
     //Step 3: Resend Transaction (If transaction is not mined in the blockchain)
+    // Resend functionality is used for EVM Chain only.
+    // Do not call this method in your API. This is cron base function. 
     ResendTransaction({
         walletInstance:walletInstance,
         sleepInMilliseconds:60000
