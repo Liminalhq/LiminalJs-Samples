@@ -28,7 +28,8 @@ export class WithdrawalWalletListProxy{
                                         'UMLG',
                                         'UATOM',
                                         "BCH",
-                                        "DOGE"
+                                        "DOGE",
+                                        "XTZ"
                                     ],
                                     
                                 }
