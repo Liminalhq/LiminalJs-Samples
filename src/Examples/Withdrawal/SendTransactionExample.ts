@@ -24,7 +24,7 @@ const main = async (): Promise<void> => {
     //Step 2: Get Wallet Instance (Native Coin)
     let walletInstance: Wallet = await WalletInstanceAsync({
         liminalJs: liminalJs,
-        coin: CoinsEnum.xrp,
+        coin: CoinsEnum.eth,
         walletId: Number(withdrawalWalletId)
     });
 

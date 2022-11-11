@@ -2,7 +2,7 @@ import { GetBalanceResultDataWrapper, TransferTransactionRequestResult, Transfer
 import { GetTransferTransactionListAsync } from "../Helpers/GetTransferTransaction";
 import { GetWalletBalanceAsync } from "../Helpers/GetWalletBalance";
 import { SendManyTransactionAsync } from "../Helpers/SendManyTransaction";
-import { TransactionStatusAsync } from "../Helpers/TransactionStatus";
+import { TransactionStatusLoopSuccessOrFailedAsync } from "../Helpers/TransactionStatus";
 
 export interface ISendTransactionOptions{
     walletInstance:Wallet;
@@ -48,7 +48,7 @@ export const SendTransaction=async(params:ISendTransactionOptions):Promise<void>
 
                 // Step 3.3 : Check Transaction Status
 
-                let transactionStatus:TransferTransactionRequestResult=await TransactionStatusAsync({
+                let transactionStatus:TransferTransactionRequestResult=await TransactionStatusLoopSuccessOrFailedAsync({
                     walletInstance:walletInstance,
                     sequenceId:params?.sequenceId
                 });

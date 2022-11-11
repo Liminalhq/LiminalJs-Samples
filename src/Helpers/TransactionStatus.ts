@@ -11,6 +11,27 @@ export const TransactionStatusAsync=async(params:ITransactionStatusOptions):Prom
 
     try
     {
+
+        transactionStatusResult=await params?.walletInstance?.TransferStatus({
+                sequenceId:params?.sequenceId
+            });
+
+        return transactionStatusResult;
+        
+    }
+    catch(ex)
+    {
+        throw ex;
+    }
+}
+
+
+export const TransactionStatusLoopSuccessOrFailedAsync=async(params:ITransactionStatusOptions):Promise<TransferTransactionRequestResult>=>{
+
+    let transactionStatusResult:TransferTransactionRequestResult;
+
+    try
+    {
         while(true){
 
             transactionStatusResult=await params?.walletInstance?.TransferStatus({
