@@ -10,9 +10,8 @@
     "start:azure-configure": "az login",
     "start:mpc-setup": "./src/Cli/mpc/install.sh",
     "start:st": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Demo/Withdrawal/SendTransactionExample.ts",
-    "start:mpc-key": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Initialize/GenerateSignerPublicKey/MPC/GenerateMPCKeyIdExample.ts",
-    "start:ga": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Demo/Deposit/GenerateAddressExample.ts",
     "start:ct": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Demo/Deposit/ConsolidateTransactionEVMExample.ts",
+    "start:mpc-key": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Initialize/GenerateSignerPublicKey/MPC/GenerateMPCKeyIdExample.ts",
     "start:psk-aws": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Initialize/GenerateSignerPublicKey/AWS/GetSignerPublicKeysExample.ts",
     "start:psk-mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Initialize/GenerateSignerPublicKey/MPC/GetSignerPublicKeysExample.ts",
     "start:af": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Withdrawal/ApproxFeeRate/Index.ts",
@@ -39,9 +38,7 @@
     "start:dst": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/DataTransaction/EVM/Index.ts",
     "debug:cli": "ts-node-dev --inspect=4320 --pretty --transpile-only ./src/Cli/Index.ts",
     "build": "tsc -p tsconfig.json",
-    "reset:env": "ts-node-dev --respawn --pretty --transpile-only ./src/Cli/Shared/ResetEnvFile.ts",
-    "start:dev": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/Playground.ts",
-    "wallet:list": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/ListWallets.ts"
+    "reset:env": "ts-node-dev --respawn --pretty --transpile-only ./src/Cli/Shared/ResetEnvFile.ts"
   },
   "keywords": [],
   "author": "",
