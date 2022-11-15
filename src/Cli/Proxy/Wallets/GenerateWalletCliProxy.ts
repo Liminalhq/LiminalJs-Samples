@@ -4,7 +4,7 @@ import { ContinueWallet } from "../../Shared/CLI/ContinueWallet";
 import { IsEnvReady } from "../../Shared/IsEnvReady";
 import { DepositWalletListProxy } from "./Lists/DepositWalletListProxy";
 import { WithdrawalWalletListProxy } from "./Lists/WithdrawalWalletListProxy";
-let clc=require("cli-color");
+//let clc=require("cli-color");
 export class GenerateWalletCliProxy{
 
     private question:Promise<any> & {

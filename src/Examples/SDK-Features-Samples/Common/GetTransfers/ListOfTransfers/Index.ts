@@ -1,7 +1,5 @@
-import { CoinsEnum, LiminalEnvironment, LiminalJs, TransferTransactionWrapper, Wallet } from "@lmnl/liminaljs";
-import { GetTransferTransactionListAsync } from "../../../../../Helpers/GetTransferTransaction";
-import { LiminalAuthAsync } from "../../../../../Helpers/LiminalAuth";
-import { WalletInstanceAsync } from "../../../../../Helpers/WalletInstance";
+import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { GetTransferTransactionListAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { clientId, clientSecretId, env } from "../../../../../Settings";
 
 /**
@@ -31,7 +29,7 @@ export const main=async():Promise<void>=>{
         });
 
         // Step 3: Get list of Transaction Transfers data
-        let transferTransactionResult:TransferTransactionWrapper[]=await GetTransferTransactionListAsync({
+        let transferTransactionResult=await GetTransferTransactionListAsync({
             walletInstance:walletInstance,
             pagination:{
                 pageNumber:1,
@@ -39,7 +37,15 @@ export const main=async():Promise<void>=>{
             }
         });
 
-        console.log(`Transfer Transaction Result => ${JSON.stringify(transferTransactionResult)}`);
+        if(transferTransactionResult?.success===true){
+            console.log(`Transfer Transaction Result => ${JSON.stringify(transferTransactionResult?.data)}`);
+        }
+        else
+        {
+            console.log(`Error => Transfer Transaction Result => ${transferTransactionResult?.data}`);
+        }
+
+        
     }
     catch(ex)
     {

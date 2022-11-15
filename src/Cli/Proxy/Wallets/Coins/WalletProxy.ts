@@ -1,7 +1,6 @@
 import { CoinsEnum, CreateWalletResultDataWrapper, LiminalEnvironment, WalletType } from "@lmnl/liminaljs";
+import { CreateWalletAsync, LiminalAuthAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import Enumerable from "linq";
-import { CreateWalletAsync } from "../../../../Helpers/CreateWallet";
-import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
 import { GetCoSignersEmailIds } from "../../../Shared/CLI/CoSignersEmailIdInput";
 import { WriteEnvToFile } from "../../../Shared/SaveEnv";
 var clc = require("cli-color");
@@ -9,6 +8,7 @@ var clc = require("cli-color");
 export interface IWalletExecuteOptions{
     coin:CoinsEnum;
     walletType:WalletType;
+    cloudProvider:string;
 }
 
 export class WalletProxy{
@@ -22,11 +22,11 @@ export class WalletProxy{
             // Get Co Signer Email Id
             if(params?.walletType===WalletType.Deposit)
             {
-                walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app","riya@lmnl.app"]);
+                walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app","riya@lmnl.app"],params.cloudProvider);
             }
             else if(params?.walletType===WalletType.Withdrawal)
             {
-                walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app","mansi@lmnl.app"]);
+                walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app","mansi@lmnl.app"],params?.cloudProvider);
             }
             
         }
@@ -65,7 +65,7 @@ export class WalletProxy{
         }
     }
 
-    private async CreatePipelineWalletAsync(coin:CoinsEnum, walletType:WalletType,coSignerEmailId?:string[]):Promise<number>{
+    private async CreatePipelineWalletAsync(coin:CoinsEnum, walletType:WalletType,coSignerEmailId?:string[],cloudProviderName?:string):Promise<number>{
         try
         {
             // Step 1: Auth
@@ -84,7 +84,8 @@ export class WalletProxy{
                     coin:coin,
                     walletType:walletType,
                     coSigners:coSignerEmailId
-                }
+                },
+                cloudProvider:cloudProviderName[cloudProviderName]
             });
 
             if(wallet.success===true){
@@ -100,6 +101,7 @@ export class WalletProxy{
                     console.log(`Wallet Coin => ${walletData?.coin}`);
                     console.log(`Wallet ParentChain => ${walletData?.parentChain}`);
                     console.log(`Wallet Message => ${walletData?.message}`);
+                    console.log(`############################################################`);
                 }
                 
                 let walletData=Enumerable.from(wallet.data)

@@ -1,7 +1,5 @@
-import { CoinsEnum, GetAddressBalanceResultDataWrapper, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
-import { GetAddressBalanceAsync } from "../../../../../Helpers/GetAddressBalance";
-import { LiminalAuthAsync } from "../../../../../Helpers/LiminalAuth";
-import { WalletInstanceAsync } from "../../../../../Helpers/WalletInstance";
+import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { GetAddressBalanceAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { clientId, clientSecretId, env } from "../../../../../Settings";
 
 /**
@@ -29,7 +27,7 @@ export const main=async():Promise<void>=>{
         });
 
         // Step 3 Get address balance => Pagination
-        let response:GetAddressBalanceResultDataWrapper=await GetAddressBalanceAsync({
+        let response=await GetAddressBalanceAsync({
             walletInstance:walletInstance,
             getAddressBalanceOption:{
                 pagination:{

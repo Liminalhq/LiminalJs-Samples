@@ -1,7 +1,5 @@
-import { CoinsEnum, LiminalEnvironment, LiminalJs, PushRefillTxResultWrapper, Wallet } from "@lmnl/liminaljs";
-import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
-import { PushRefillTransactionAsync } from "../../../../Helpers/PushRefillTransaction";
-import { WalletInstanceAsync } from "../../../../Helpers/WalletInstance";
+import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { LiminalAuthAsync, PushRefillTransactionAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { clientId, clientSecretId, env } from "../../../../Settings";
 
 /**
@@ -31,15 +29,15 @@ export const main=async():Promise<void>=>{
         });
 
         // Step3 : Push Refill Transaction
-        let response:PushRefillTxResultWrapper=await PushRefillTransactionAsync({
+        let response=await PushRefillTransactionAsync({
             walletInstance:walletInstance
         });
 
         if (response.success) {
             //request successful
+            console.log(`Push Refill Transaction Response => ${response?.data}`);
         } else {
-            //console.log("Request failed due to error:", response.message);
-            console.log(`Error : ${response.responseError?.errorCode || response?.responseError?.message || response?.responseError?.data}`);
+            console.log(`Error Push Refill Transaction Response : ${response?.message}`);
         }
 
         

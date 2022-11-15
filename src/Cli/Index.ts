@@ -45,5 +45,5 @@ const main=async():Promise<void>=>{
 }
 
 
-main()?.then((resolve)=> console.log()).catch((error)=> console.log(error.message));
+main()?.then((resolveData)=> console.log(resolveData)).catch((error)=> console.log(error.message));
 

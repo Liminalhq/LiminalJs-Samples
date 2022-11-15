@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import { close, closeSync, openSync, readFile, readFileSync, writeFileSync } from 'fs';
+import { close, openSync,readFileSync, writeFileSync } from 'fs';
 import * as envfile from 'envfile';
 
 // import * as dotenv from "dotenv";

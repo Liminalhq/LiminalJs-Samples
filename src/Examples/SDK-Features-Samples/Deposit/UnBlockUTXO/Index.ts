@@ -1,7 +1,5 @@
-import { CoinsEnum, LiminalEnvironment, LiminalJs, UnBlockUtxoResultDataWrapper, Wallet } from "@lmnl/liminaljs";
-import { UnBlockUTXOAsync } from "../../../../Helpers/BlockUnBlockUTXO";
-import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
-import { WalletInstanceAsync } from "../../../../Helpers/WalletInstance";
+import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { LiminalAuthAsync, UnBlockUTXOAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { clientId, clientSecretId, env } from "../../../../Settings";
 
 /**
@@ -30,7 +28,7 @@ export const main=async():Promise<void>=>{
         }); 
 
         // Step 3:UnBlock UTXO
-        let response:UnBlockUtxoResultDataWrapper=await UnBlockUTXOAsync({
+        let response=await UnBlockUTXOAsync({
             walletInstance:walletInstance,
             unBlockUtxoOption:{
                 hash:"3dd3795d48b05eb26fa0563f1127f83fc6b4cd79a0d2968199d77d4e2b3f4c36",

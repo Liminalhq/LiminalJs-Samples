@@ -1,8 +1,10 @@
-import { CloudProvider, GetSignerPublicKeyResultDataWrapper, LiminalEnvironment, LiminalJs, WalletType } from "@lmnl/liminaljs";
-import { GetSignerPublicKeyAsync } from "../../../../Helpers/GetPublicSignerKeys";
-import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
-import { clientId, clientSecretId, cloudProviderName, env,tsmCred } from "../../../../Settings";
+import { CloudProvider, GetSignerPublicKeyResultDataWrapper, LiminalEnvironment, LiminalJs } from "@lmnl/liminaljs";
+import { GetSignerPublicKeyAsync, LiminalAuthAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
+import { clientId, clientSecretId, cloudProviderName, env,tsmCred } from "../../../../../Settings";
 
+/**
+ * Run Command : npm run start:psk-mpc
+ */
 const main=async(): Promise<void>=>{
     
     // Step 1: Auth

@@ -3,7 +3,7 @@ import { WriteEnvToFile } from "../../../Shared/SaveEnv";
 import fs,{readFileSync} from 'fs';
 import { resolve } from 'path';
 import { tsmCreds } from "@lmnl/liminaljs";
-import { IsEnvReady, IsSDKKeyEnvReady } from "../../../Shared/IsEnvReady";
+import { IsSDKKeyEnvReady } from "../../../Shared/IsEnvReady";
 import { clear } from "console";
 import { Banner } from "../../../Shared/CLI/Banner";
 import inquirer from 'inquirer';

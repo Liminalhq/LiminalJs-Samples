@@ -1,7 +1,5 @@
-import { AddressType, CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
-import { GenerateAddressAsync } from "../../../../Helpers/GenerateAddress";
-import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
-import { WalletInstanceAsync } from "../../../../Helpers/WalletInstance";
+import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { GenerateAddressAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { clientId, clientSecretId, depositWalletId, env } from "../../../../Settings";
 
 
@@ -30,12 +28,19 @@ export const main=async():Promise<void>=>{
         });
 
         // Step 3 Generate Address
-        let address:AddressType=await GenerateAddressAsync({
+        let response=await GenerateAddressAsync({
             path:0,
             walletInstance:walletInstance
         });
 
-        console.log("Address Type =>",JSON.stringify(address));
+        if(response?.success===true){
+            console.log("Address Type =>",JSON.stringify(response?.data));
+        }
+        else
+        {
+            console.log(`Error => Address Type => ${response?.message}`);
+        }
+
     }
     catch(ex)
     {

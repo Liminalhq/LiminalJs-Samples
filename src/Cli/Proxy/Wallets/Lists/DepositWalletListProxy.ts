@@ -3,6 +3,7 @@ import inquirer from "inquirer";
 import { CoinsEnum, WalletType } from "@lmnl/liminaljs";
 import { WalletProxy } from "../Coins/WalletProxy";
 import { IsEnvReadyMPC } from "../../../Shared/IsEnvReady";
+import { GetCoinList } from "../../../Shared/CoinList";
 
 export class DepositWalletListProxy{
     
@@ -18,20 +19,7 @@ export class DepositWalletListProxy{
                                     type: 'list',
                                     name: 'deposit',
                                     message: 'select the coin =>',
-                                    choices: [
-                                        'BTC',
-                                        'LTC',
-                                        'ETH',
-                                        'MATIC',
-                                        'TRX',
-                                        'XRP',
-                                        'BNB',
-                                        "UMLG",
-                                        "UATOM",
-                                        "BCH",
-                                        "DOGE",
-                                        "XTZ"
-                                    ],
+                                    choices: GetCoinList(),
                                     
                                 }
                             ]
@@ -50,12 +38,15 @@ export class DepositWalletListProxy{
 
            let isMPCEnvReady:boolean=IsEnvReadyMPC(coinRaw.toUpperCase());
 
+           let providerName=process?.env?.PROVIDER_NAME;
+
            if(isMPCEnvReady===true){
 
             let depositWalletProxy:WalletProxy=new WalletProxy();
                 await depositWalletProxy.Execute({
                     coin:coin,
-                    walletType:WalletType.Deposit
+                    walletType:WalletType.Deposit,
+                    cloudProvider:providerName
                 });
 
            }
