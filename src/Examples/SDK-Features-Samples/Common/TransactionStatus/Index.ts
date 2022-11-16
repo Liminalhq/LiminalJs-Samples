@@ -47,8 +47,7 @@ export const main=async():Promise<void>=>{
                 1:'Pending',
                 2:'Broadcasted',
                 4:'Confirmed',
-                5:'Cancelled',
-                6:'Failed'
+                5:'Cancelled-Failed',
             }
             console.log("Transaction Status =>",statusLiteral[transactionStatusResult?.data?.status]);
 

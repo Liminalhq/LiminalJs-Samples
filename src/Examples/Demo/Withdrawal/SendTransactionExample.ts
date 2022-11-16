@@ -1,7 +1,7 @@
-import { CoinsEnum, LiminalEnvironment, LiminalJs, TransferTransactionRequestResult, Wallet } from "@lmnl/liminaljs";
+import { CoinsEnum, LiminalEnvironment, LiminalJs, TransferTransactionRequestResult, tsmCreds, Wallet } from "@lmnl/liminaljs";
 import { GetTransferTransactionListAsync, GetWalletBalanceAsync, LiminalAuthAsync, ResendEVMTransactionAsync, SendManyTransactionAsync, TransactionStatusLoopSuccessOrFailedAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Guid } from "guid-typescript";
-import { clientId, clientSecretId, env, withdrawalWalletId } from "../../../Settings";
+import { clientId, clientSecretId, env, tsmCred, withdrawalWalletId } from "../../../Settings";
 
 /**
  * Run Command : npm run start:st
@@ -57,11 +57,12 @@ const main = async (): Promise<void> => {
         walletInstance: walletInstance,
         recipients: [
             {
-                address: "0x4014c023192ef37a91adcea4ac2fdd90914bd76f",
-                amount: 0.00001
+                address:"3xZrNy2CdZ5yVoX9eSinrVuxWVH8t8ezp3eyCRGsrUNM",
+                amount:0.01,
             }
         ],
-        sequenceId: sequenceId
+        sequenceId: sequenceId,
+        tsmCred:tsmCred
     });
 }
 
@@ -81,6 +82,7 @@ export interface ISendTransactionOptions{
         data?: string;
     }[],
     sequenceId?:string;
+    tsmCred?:tsmCreds
 }
 
 
@@ -110,7 +112,8 @@ const SendTransaction=async(params:ISendTransactionOptions):Promise<void>=>{
                         walletInstance:walletInstance,
                         recipientsData:{
                             recipients:params.recipients,
-                            sequenceId:params?.sequenceId
+                            sequenceId:params?.sequenceId,
+                            tsmCreds:params?.tsmCred
                         }
                     });
 

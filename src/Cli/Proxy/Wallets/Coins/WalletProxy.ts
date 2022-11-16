@@ -1,4 +1,4 @@
-import { CoinsEnum, CreateWalletResultDataWrapper, LiminalEnvironment, WalletType } from "@lmnl/liminaljs";
+import { CloudProvider, CoinsEnum, CreateWalletResultDataWrapper, LiminalEnvironment, WalletType } from "@lmnl/liminaljs";
 import { CreateWalletAsync, LiminalAuthAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import Enumerable from "linq";
 import { GetCoSignersEmailIds } from "../../../Shared/CLI/CoSignersEmailIdInput";
@@ -34,7 +34,7 @@ export class WalletProxy{
         {
             // Get Co Signer Email Id
             let coSignerEmailId:string[]=await GetCoSignersEmailIds();
-            walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType,coSignerEmailId);
+            walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType,coSignerEmailId,params?.cloudProvider);
         }
 
         if(walletId!==0){
@@ -85,7 +85,7 @@ export class WalletProxy{
                     walletType:walletType,
                     coSigners:coSignerEmailId
                 },
-                cloudProvider:cloudProviderName[cloudProviderName]
+                cloudProvider:CloudProvider[cloudProviderName]
             });
 
             if(wallet.success===true){
