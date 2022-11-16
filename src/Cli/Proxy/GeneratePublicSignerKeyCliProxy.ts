@@ -1,6 +1,5 @@
 import { CloudProvider,GetSignerPublicKeyResultDataWrapper,LiminalEnvironment, LiminalJs } from "@lmnl/liminaljs";
-import { GetSignerPublicKeyAsync } from "../../Helpers/GetPublicSignerKeys";
-import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
+import { GetSignerPublicKeyAsync, LiminalAuthAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Header } from "../Shared/CLI/Header";
 import { WriteEnvToFile } from "../Shared/SaveEnv";
 

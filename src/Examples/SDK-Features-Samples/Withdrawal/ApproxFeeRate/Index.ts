@@ -1,7 +1,5 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
-import { ApproxFeesRateAsync, ApproxFeesResponseDataResult } from "../../../../Helpers/ApproxFeeRate";
-import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
-import { WalletInstanceAsync } from "../../../../Helpers/WalletInstance";
+import { ApproxFeesRateAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { clientId, clientSecretId, env } from "../../../../Settings";
 
 /**
@@ -29,12 +27,17 @@ export const main=async():Promise<void>=>{
         }); 
 
         // Step 3:
-        let approxFeesResponseDataResult:ApproxFeesResponseDataResult=await ApproxFeesRateAsync({
+        let approxFeesResponseDataResult=await ApproxFeesRateAsync({
             walletInstance:walletInstance
         });
 
-        console.log(`Fees Details =>${JSON.stringify(approxFeesResponseDataResult)}`);
-        
+        if(approxFeesResponseDataResult?.success===true){
+            console.log(`Fees Details =>${JSON.stringify(approxFeesResponseDataResult?.data)}`);
+        }
+        else
+        {
+            console.log(`Error Fees Details => ${approxFeesResponseDataResult?.message}`);
+        }
     }
     catch(ex)
     {

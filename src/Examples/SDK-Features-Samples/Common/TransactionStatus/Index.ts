@@ -1,7 +1,5 @@
-import { CoinsEnum, LiminalEnvironment, LiminalJs, TransferTransactionRequestResult, Wallet } from "@lmnl/liminaljs";
-import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
-import { TransactionStatusAsync } from "../../../../Helpers/TransactionStatus";
-import { WalletInstanceAsync } from "../../../../Helpers/WalletInstance";
+import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { LiminalAuthAsync, TransactionStatusAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { clientId, clientSecretId } from "../../../../Settings";
 
 
@@ -35,25 +33,34 @@ export const main=async():Promise<void>=>{
         // Get sequenceId from your DB which you want to check the transaction status
         let transactionSequenceId="56310902-57b6-c7a7-1891-e7874a5a6d44";
 
-        let transactionStatusResult:TransferTransactionRequestResult=await TransactionStatusAsync({
+        let transactionStatusResult=await TransactionStatusAsync({
             walletInstance:walletInstance,
             sequenceId:transactionSequenceId
         });
 
-        console.log("Transaction Status JSON =>",JSON.stringify(transactionStatusResult));
+        if(transactionStatusResult?.success===true){
 
-        // Get Transaction Status
-        let statusLiteral={
-            1:'Pending',
-            2:'Broadcasted',
-            4:'Confirmed',
-            5:'Cancelled',
-            6:'Failed'
+            console.log("Transaction Status JSON =>",JSON.stringify(transactionStatusResult));
+
+            // Get Transaction Status
+            let statusLiteral={
+                1:'Pending',
+                2:'Broadcasted',
+                4:'Confirmed',
+                5:'Cancelled-Failed',
+            }
+            console.log("Transaction Status =>",statusLiteral[transactionStatusResult?.data?.status]);
+
+            // Get Transaction Hash
+            console.log("Transaction Hash =>",transactionStatusResult?.data?.identifier);
+
         }
-        console.log("Transaction Status =>",statusLiteral[transactionStatusResult?.status]);
+        else
+        {
+            console.log(`Error Transaction Status => ${transactionStatusResult?.message}`);
+        }
 
-        // Get Transaction Hash
-        console.log("Transaction Hash =>",transactionStatusResult?.identifier);
+        
     }
     catch(ex)
     {

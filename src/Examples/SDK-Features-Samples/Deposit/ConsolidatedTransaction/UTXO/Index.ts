@@ -1,8 +1,6 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { ConsolidatedTransactionAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Guid } from "guid-typescript";
-import { ConsolidatedTransactionAsync } from "../../../../../Helpers/ConsolidateTransaction";
-import { LiminalAuthAsync } from "../../../../../Helpers/LiminalAuth";
-import { WalletInstanceAsync } from "../../../../../Helpers/WalletInstance";
 import { clientId, clientSecretId, env } from "../../../../../Settings";
 
 /**
@@ -33,7 +31,7 @@ export const main=async():Promise<void>=>{
         // Step 3: Consolidate Send Transaction
         let sequenceId:string=Guid.create().toString();
 
-        let transactionResponse:any=await ConsolidatedTransactionAsync({
+        let transactionResponse=await ConsolidatedTransactionAsync({
             walletInstance:walletInstance,
             sequenceId:sequenceId,
             consolidateOptions:{
@@ -41,9 +39,13 @@ export const main=async():Promise<void>=>{
             }
         });
 
-        console.log("Transaction Response =>",JSON.stringify(transactionResponse));
-
-        
+        if(transactionResponse?.success===true){
+            console.log("Transaction Response =>",JSON.stringify(transactionResponse?.data));
+        }
+        else
+        {
+            console.log(`Error => Transaction Response => ${transactionResponse?.message}`);
+        }
     }
     catch(ex)
     {

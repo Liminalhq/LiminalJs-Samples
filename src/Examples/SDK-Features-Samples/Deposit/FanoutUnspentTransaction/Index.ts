@@ -1,9 +1,6 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { FanoutUnspentTransactionAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Guid } from "guid-typescript";
-import { ConsolidatedTransactionAsync } from "../../../../Helpers/ConsolidateTransaction";
-import { FanoutUnspentTransactionAsync } from "../../../../Helpers/FanoutUnspentTransaction";
-import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
-import { WalletInstanceAsync } from "../../../../Helpers/WalletInstance";
 import { clientId, clientSecretId, env } from "../../../../Settings";
 
 /**
@@ -34,12 +31,18 @@ export const main=async():Promise<void>=>{
         // Step 3: Fanout Transaction
         let sequenceId:string=Guid.create().toString();
 
-        let transactionResponse:any=await FanoutUnspentTransactionAsync({
+        let transactionResponse=await FanoutUnspentTransactionAsync({
             walletInstance:walletInstance,
             sequenceId:sequenceId
         });
 
-        console.log("Transaction Response =>",JSON.stringify(transactionResponse));
+        if(transactionResponse?.success===true){
+            console.log("Transaction Response =>",JSON.stringify(transactionResponse?.data));
+        }
+        else
+        {
+            console.log(`Error => Transaction Response => ${transactionResponse?.message}`);
+        }        
     }
     catch(ex)
     {

@@ -1,7 +1,5 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
-import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
-import { ResendEVMTransactionAsync } from "../../../../Helpers/ResendEVMTransaction";
-import { WalletInstanceAsync } from "../../../../Helpers/WalletInstance";
+import { LiminalAuthAsync, ResendEVMTransactionAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { clientId, clientSecretId, env } from "../../../../Settings";
 
 /**

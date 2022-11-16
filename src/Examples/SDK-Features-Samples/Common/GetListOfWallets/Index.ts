@@ -1,6 +1,5 @@
-import { CoinsEnum, LiminalEnvironment, LiminalJs, WalletsWrapper } from "@lmnl/liminaljs";
-import { GetListOfWalletsAsync } from "../../../../Helpers/GetListOfWallets";
-import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
+import { CoinsEnum, LiminalEnvironment, LiminalJs } from "@lmnl/liminaljs";
+import { GetListOfWalletsAsync, LiminalAuthAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { clientId, clientSecretId, env } from "../../../../Settings";
 
 /**
@@ -21,12 +20,20 @@ export const main=async():Promise<void>=>{
         });
 
         // Step 2: Get List of Wallets
-        let walletList:WalletsWrapper[]=await GetListOfWalletsAsync({
+        let walletList=await GetListOfWalletsAsync({
             coin:CoinsEnum.eth, // Define your Coin here
             liminalJs:liminalJs
         });
 
-        console.log(`Wallet List => ${JSON.stringify(walletList)}`);
+        if(walletList?.success===true){
+            console.log(`Wallet List => ${JSON.stringify(walletList?.data)}`);
+        }
+        else
+        {
+            console.log(`Error => Wallet List => ${walletList?.message}`);
+        }
+
+        
     }
     catch(ex)
     {

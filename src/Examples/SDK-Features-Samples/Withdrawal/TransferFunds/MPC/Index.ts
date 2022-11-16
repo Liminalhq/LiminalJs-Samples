@@ -1,11 +1,11 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
 import { LiminalAuthAsync, SendManyTransactionAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Guid } from "guid-typescript";
-import { clientId, clientSecretId } from "../../../../../Settings";
+import { clientId, clientSecretId, env, tsmCred } from "../../../../../Settings";
 
 /**
- * Run Command => npm run start:tft
- * Docs =>https://docs.lmnl.app/docs/sendmany-tokens
+ * Run Command => npm run start:tfnc-mpc
+ * Docs => https://docs.lmnl.app/docs/sendmany
  */
 export const main=async():Promise<void>=>{
 
@@ -17,19 +17,14 @@ export const main=async():Promise<void>=>{
                 clientId:clientId,
                 clientSecret:clientSecretId
             },
-            env:LiminalEnvironment.test
+            env:LiminalEnvironment[env]
         });
 
         // Step 2: Get Wallet Instance
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
-            coin:CoinsEnum.eth,
-            walletId:310,
-            allToken:true,
-            tokenOptions:{
-                tokenName:"bat",
-                tokenAddress:"0xbF7A7169562078c96f0eC1A8aFD6aE50f12e5A99"
-            }
+            coin:CoinsEnum.sol, // Define your Coin here
+            walletId:3466 // Define your coin wallet Id
         });
 
         // Step 3 : Send Transaction
@@ -41,11 +36,14 @@ export const main=async():Promise<void>=>{
             recipientsData:{
                 recipients:[
                     {
-                        address:"0x7f17bE241F88530DA74F035E8b74125fFEDeA98D",
-                        amount:0.00001
-                    }
+                        address:"3xZrNy2CdZ5yVoX9eSinrVuxWVH8t8ezp3eyCRGsrUNM",
+                        amount:0.01,
+                        //data:""  //=> If you are using XRP
+                    },
+
                 ],
-                sequenceId:sequenceId
+                sequenceId:sequenceId,
+                tsmCreds:tsmCred
             }
         });
 
@@ -56,8 +54,6 @@ export const main=async():Promise<void>=>{
         {
             console.log(`Error => Transaction Response => ${transactionResponse?.message}`);
         }        
-
-        
     }
     catch(ex)
     {

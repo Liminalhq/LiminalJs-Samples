@@ -1,9 +1,10 @@
 import { CoinsEnum, GenerateMPCKeyIDResultWrapper, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
-import { GenerateMPCKeyIdAsync } from "../../Helpers/GenerateMPCKeyId";
-import { LiminalAuthAsync } from "../../Helpers/LiminalAuth";
-import { WalletInstanceAsync } from "../../Helpers/WalletInstance";
-import { clientId, clientSecretId, depositWalletId, env, tsmCred } from "../../Settings";
+import { GenerateMPCKeyIdAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
+import { clientId, clientSecretId, depositWalletId, env, tsmCred } from "../../../../../Settings";
 
+/**
+ * Run Command : start:mpc-key
+ */
 export const main=async():Promise<void>=>{
 
     try

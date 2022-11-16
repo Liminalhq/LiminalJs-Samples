@@ -1,7 +1,5 @@
-import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet, WalletsWrapper } from "@lmnl/liminaljs";
-import { GetWalletDataAsync } from "../../../../Helpers/GetWalletData";
-import { LiminalAuthAsync } from "../../../../Helpers/LiminalAuth";
-import { WalletInstanceAsync } from "../../../../Helpers/WalletInstance";
+import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { GetWalletDataAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { clientId, clientSecretId, env } from "../../../../Settings";
 
 
@@ -31,11 +29,41 @@ export const main=async():Promise<void>=>{
         });
 
         // Step 3: Get Wallet Data
-        let walletData:WalletsWrapper=(await GetWalletDataAsync({
+        let walletData=await GetWalletDataAsync({
             walletInstance:walletInstance
-        }))?.Data;
+        });
 
-        console.log(`Wallet Data => ${JSON.stringify(walletData)}`);
+        if(walletData?.success===true){
+
+            // Get Result
+            console.log(`Wallet Data => ${JSON.stringify(walletData?.data?.Result)}`);
+
+            // Get Data (Liminal)
+            console.log(`Wallet Data => ${JSON.stringify(walletData?.data?.Data)}`);
+
+            // Get Wallet Id
+            console.log(`Wallet Id => ${walletInstance?.WalletId}`);
+
+            // Get Wallet Address
+            console.log(`Wallet Address => ${walletInstance?.WalletAddress}`);
+
+            // Get Coin Name
+            console.log(`Coin Name => ${walletInstance?.Coin}`);
+
+            // Get Chain Name
+            console.log(`Chain Name => ${walletInstance?.Chain}`);
+
+            // Get parent chain
+            console.log(`Parent Chain => ${walletInstance?.ParentChain}`);
+
+
+        }
+        else
+        {
+            console.log(`Error => Wallet Data => ${JSON.stringify(walletData?.message)}`);
+        }
+
+        
     }
     catch(ex)
     {

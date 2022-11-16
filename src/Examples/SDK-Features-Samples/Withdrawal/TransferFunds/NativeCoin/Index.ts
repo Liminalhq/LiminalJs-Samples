@@ -1,8 +1,6 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
+import { LiminalAuthAsync, SendManyTransactionAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Guid } from "guid-typescript";
-import { LiminalAuthAsync } from "../../../../../Helpers/LiminalAuth";
-import { SendManyTransactionAsync } from "../../../../../Helpers/SendManyTransaction";
-import { WalletInstanceAsync } from "../../../../../Helpers/WalletInstance";
 import { clientId, clientSecretId, env } from "../../../../../Settings";
 
 /**
@@ -48,9 +46,13 @@ export const main=async():Promise<void>=>{
             }
         });
 
-        console.log("Transaction Response =>",JSON.stringify(transactionResponse));
-
-        
+        if(transactionResponse?.success===true){
+            console.log("Transaction Response =>",JSON.stringify(transactionResponse?.data));
+        }
+        else
+        {
+            console.log(`Error => Transaction Response => ${transactionResponse?.message}`);
+        }        
     }
     catch(ex)
     {
