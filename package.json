@@ -37,6 +37,7 @@
     "start:tfg": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Withdrawal/TransferFunds/GnosisData/Index.ts",
     "start:dst": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/DataTransaction/EVM/Index.ts",
     "start:tfnc-mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Withdrawal/TransferFunds/MPC/Index.ts",
+    "start:auth":"ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Initialize/Auth/Index.ts",
     "debug:cli": "ts-node-dev --inspect=4320 --pretty --transpile-only ./src/Cli/Index.ts",
     "build": "tsc -p tsconfig.json",
     "reset:env": "ts-node-dev --respawn --pretty --transpile-only ./src/Cli/Shared/ResetEnvFile.ts"
