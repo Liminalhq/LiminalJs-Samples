@@ -42,7 +42,7 @@ export const main=async():Promise<void>=>{
         }
         else
         {
-            console.log(`Error => Transfer Transaction Result => ${transferTransactionResult?.data}`);
+            console.log(`Error => Transfer Transaction Result => ${transferTransactionResult?.message}`);
         }
 
         
