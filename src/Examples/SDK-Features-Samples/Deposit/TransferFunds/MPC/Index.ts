@@ -1,14 +1,12 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
-import { ConsolidatedTransactionAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
+import { LiminalAuthAsync, SendManyTransactionAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Guid } from "guid-typescript";
 import { clientId, clientSecretId, env, tsmCred } from "../../../../../Settings";
 
-
 /**
- * Run Command => npm run start:ct-evm
- * Docs => https://docs.lmnl.app/docs/consolidate-transaction
+ * Run Command => npm run start:std-mpc
+ * Docs => https://docs.lmnl.app/docs/sendmany
  */
-
 export const main=async():Promise<void>=>{
 
     try
@@ -25,31 +23,32 @@ export const main=async():Promise<void>=>{
         // Step 2: Get Wallet Instance
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
-            coin:CoinsEnum.eth, // Define Your Coin here
-            walletId:1609 // Define Your Coin Wallet Id Here
+            coin:CoinsEnum.sol, // Define your Coin here
+            walletId:3466 // Define your Deposit wallet Id
         });
 
-        // Step 3: Consolidate Send Transaction
+        // Step 3 : Send Transaction
+        let sequenceId:string=Guid.create().toString();
+        console.log("sequenceId =>", sequenceId);
 
-        let transactionResponse=await ConsolidatedTransactionAsync({
+        let transactionResponse=await SendManyTransactionAsync({
             walletInstance:walletInstance,
-            tsmCred:tsmCred,
-            consolidateOptions:{
-                targetAddress: "0xC92745038c520446d1fb88c84Da268A22cfFDEB8", // Define Your Target Address Here
-            },
-            callBackSequenceId:()=> {
-                // Call Back Loop
+            recipientsData:{
+                recipients:[
+                    {
+                        address:"3xZrNy2CdZ5yVoX9eSinrVuxWVH8t8ezp3eyCRGsrUNM",
+                        amount:0.01,
+                        //data:""  //=> If you are using XRP
+                    },
 
-                // Generate GuiD
-                let guid:string=Guid.create().toString()
-
-                console.log(`guiId => ${guid}`)
-                return guid;
+                ],
+                sequenceId:sequenceId,
+                tsmCreds:tsmCred
             }
         });
 
         if(transactionResponse?.success===true){
-            console.log(`Transaction Response => ${JSON.stringify(transactionResponse?.data)}`);
+            console.log("Transaction Response =>",JSON.stringify(transactionResponse?.data));
         }
         else
         {

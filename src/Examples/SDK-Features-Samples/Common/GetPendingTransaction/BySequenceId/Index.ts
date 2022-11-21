@@ -1,10 +1,10 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
-import { GetAddressBalanceAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
+import { GetPendingTransactionAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { clientId, clientSecretId, env } from "../../../../../Settings";
 
 /**
- * Run Command => npm run start:gabp
- * Docs => https://docs.lmnl.app/docs/get-address-balance
+ * Run Command => npm run start:pts
+ * Docs => 
  */
 export const main=async():Promise<void>=>{
 
@@ -26,19 +26,16 @@ export const main=async():Promise<void>=>{
             walletId:310 // Define your coin wallet id here.
         });
 
-        // Step 3 Get address balance => Pagination
-        let response=await GetAddressBalanceAsync({
+        // Step 3: Get Pending Transaction By Sequence Id
+        let response=await GetPendingTransactionAsync({
             walletInstance:walletInstance,
-            getAddressBalanceOption:{
-                pagination:{
-                    pageNumber:1,
-                    pageSize:100
-                }
-            }
+            getPendingTransactionOptions:{
+                sequenceId:"a88a1846-b23d-f7e8-2344-f2bddb0c16f9"
+            } 
         });
 
         if(response.success){
-            console.log("Response =>", JSON.stringify(response.data?.AddressBalanceList));
+            console.log("Response =>", JSON.stringify(response?.data?.transaction));
         }
         else
         {

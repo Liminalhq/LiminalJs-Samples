@@ -1,6 +1,6 @@
 {
   "name": "@lmnl/liminaljs-typescript",
-  "version": "1.3.0-beta-16",
+  "version": "1.3.0-beta-22",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -23,8 +23,8 @@
     "start:ga-deposit": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/GenerateAddress/Index.ts",
     "start:gwb": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetBalance/NativeCoin/Index.ts",
     "start:gtb": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetBalance/Token/Index.ts",
-    "start:gab": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetAddressBalance/ByAddress/Index.ts",
-    "start:gabp": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetAddressBalance/Pagination/Index.ts",
+    "start:gab": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetAddressBalance/NativeCoin/ByAddress/Index.ts",
+    "start:gabp": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetAddressBalance/NativeCoin/Pagination/Index.ts",
     "start:glw": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetListOfWallets/Index.ts",
     "start:gtlp": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetTransfers/ListOfTransfers/Index.ts",
     "start:gt": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetTransfers/Transfers/Index.ts",
@@ -37,7 +37,15 @@
     "start:tfg": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Withdrawal/TransferFunds/GnosisData/Index.ts",
     "start:dst": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/DataTransaction/EVM/Index.ts",
     "start:tfnc-mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Withdrawal/TransferFunds/MPC/Index.ts",
-    "start:auth":"ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Initialize/Auth/Index.ts",
+    "start:auth": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Initialize/Auth/Index.ts",
+    "start:stn": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/ConsolidatedTransaction/SingleTransaction/NativeCoin/Index.ts",
+    "start:stt": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/ConsolidatedTransaction/SingleTransaction/Token/Index.ts",
+    "start:std-mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/TransferFunds/MPC/Index.ts",
+    "start:std-aws": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/TransferFunds/AWS/Index.ts",
+    "start:gabt": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetAddressBalance/Token/ByAddress/Index.ts",
+    "start:gabpt": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetAddressBalance/Token/Pagination/Index.ts",
+    "start:pts": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetPendingTransaction/BySequenceId/Index.ts",
+    "start:ptp": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Common/GetPendingTransaction/Pagination/Index.ts",
     "debug:cli": "ts-node-dev --inspect=4320 --pretty --transpile-only ./src/Cli/Index.ts",
     "build": "tsc -p tsconfig.json",
     "reset:env": "ts-node-dev --respawn --pretty --transpile-only ./src/Cli/Shared/ResetEnvFile.ts"
@@ -64,7 +72,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "@lmnl/liminaljs": "1.3.0-beta-22",
+    "@lmnl/liminaljs": "^1.3.0-beta-23",
     "@types/cli-color": "^2.0.2",
     "cli-progress": "^3.11.2",
     "inquirer": "^8.2.4"
