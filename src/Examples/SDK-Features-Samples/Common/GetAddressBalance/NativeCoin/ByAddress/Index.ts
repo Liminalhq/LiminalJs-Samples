@@ -1,6 +1,6 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
 import { GetAddressBalanceAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
-import { clientId, clientSecretId, env } from "../../../../../Settings";
+import { clientId, clientSecretId, env } from "../../../../../../Settings";
 
 /**
  * Run Command => npm run start:gab

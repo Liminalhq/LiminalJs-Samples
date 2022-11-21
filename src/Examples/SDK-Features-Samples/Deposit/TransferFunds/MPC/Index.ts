@@ -1,10 +1,10 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
 import { LiminalAuthAsync, SendManyTransactionAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Guid } from "guid-typescript";
-import { clientId, clientSecretId, env, tsmCred } from "../../../../Settings";
+import { clientId, clientSecretId, env, tsmCred } from "../../../../../Settings";
 
 /**
- * Run Command => npm run start:tfnc-mpc
+ * Run Command => npm run start:std-mpc
  * Docs => https://docs.lmnl.app/docs/sendmany
  */
 export const main=async():Promise<void>=>{
