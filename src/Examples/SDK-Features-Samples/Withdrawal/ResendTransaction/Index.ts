@@ -28,12 +28,16 @@ export const main=async():Promise<void>=>{
             allToken:true  // Specify if your coin is EVM base otherwise do not include this property.
         });
 
-        // Step 3: Resend EVM Transaction.
-        await ResendEVMTransactionAsync({
-            walletInstance:walletInstance,
-            walletIdList:[310],
-            sleepInMilliseconds:60000  //1 Min
-        });
+        if(walletInstance?.ParentChain==="EVM"){
+
+            // Step 3: Resend EVM Transaction.
+            await ResendEVMTransactionAsync({
+                walletInstance:walletInstance,
+                walletIdList:[310],
+                sleepInMilliseconds:60000  //1 Min
+            });
+
+        }
         
     }
     catch(ex)
