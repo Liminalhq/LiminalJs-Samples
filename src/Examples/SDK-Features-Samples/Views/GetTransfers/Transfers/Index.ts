@@ -37,7 +37,7 @@ export const main=async():Promise<void>=>{
 
         if(transferTransactionResult?.success===true){
 
-            console.log("Transfer Transaction Result =>",JSON.stringify(transferTransactionResult));
+            console.log("Transfer Transaction Result =>",JSON.stringify(transferTransactionResult.data));
         }
         else
         {
