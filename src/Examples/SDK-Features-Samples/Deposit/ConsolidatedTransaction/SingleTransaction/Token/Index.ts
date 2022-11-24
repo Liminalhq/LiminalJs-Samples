@@ -43,8 +43,11 @@ export const main=async():Promise<void>=>{
                 targetAddress: "0xC92745038c520446d1fb88c84Da268A22cfFDEB8", // Define Your Target Address Here
                 fromAddress:"0x094FD2125d2ECE9e7BE6F4a5415A2e3Ab182920b"
             },
-            callBackSequenceId:()=> {
+            callBackSequenceId:(consolidateTransactionData: any)=> {
                 // Call Back Loop
+
+                 // Get Consolidate Transaction Response
+                 console.log(`Consolidation Transaction Response => ${JSON.stringify(consolidateTransactionData)}`);
 
                 // Generate GuiD
                 let guid:string=Guid.create().toString()

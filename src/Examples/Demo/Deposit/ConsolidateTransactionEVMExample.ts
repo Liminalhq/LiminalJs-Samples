@@ -85,7 +85,10 @@ const ConsolidateTransactionAsync=async(params:IConsolidateTransactionOptions): 
         consolidateOptions:{
             targetAddress: params?.targetAddress
         },
-        callBackSequenceId:()=> {
+        callBackSequenceId:(consolidateTransactionData: any)=> {
+
+            // Get Consolidate Transaction Response
+            console.log(`Consolidation Transaction Response => ${JSON.stringify(consolidateTransactionData)}`);
             
             let guid:string=Guid.create().toString()
 
@@ -113,8 +116,11 @@ const ConsolidateTransactionAsync=async(params:IConsolidateTransactionOptions): 
             consolidateOptions:{
                 targetAddress: params?.targetAddress
             },
-            callBackSequenceId:()=> {
+            callBackSequenceId:(consolidateTransactionData: any)=> {
                 
+                // Get Consolidate Transaction Response
+                console.log(`Consolidation Transaction Response => ${JSON.stringify(consolidateTransactionData)}`);
+
                 let guid:string=Guid.create().toString()
 
                 console.log(`guiId => ${guid}`)
