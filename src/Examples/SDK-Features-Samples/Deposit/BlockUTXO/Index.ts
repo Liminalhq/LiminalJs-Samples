@@ -27,23 +27,33 @@ export const main=async():Promise<void>=>{
         }); 
 
         // Step 3:Block UTXO
-        let response=await BlockUTXOAsync({
-            walletInstance:walletInstance,
-            blockUtxoOptions:{
-                hash:"3dd3795d48b05eb26fa0563f1127f83fc6b4cd79a0d2968199d77d4e2b3f4c36",
-                pos:2
-            }
-        });
 
-        if(response?.success===true){
-            console.log(`Success => ${response?.data?.message}`);
-            console.log(`Success Response => ${JSON.stringify(response?.data)}`)
+        if(walletInstance?.ParentChain==="UTXO"){
+
+            let response=await BlockUTXOAsync({
+                walletInstance:walletInstance,
+                blockUtxoOptions:{
+                    hash:"3dd3795d48b05eb26fa0563f1127f83fc6b4cd79a0d2968199d77d4e2b3f4c36",
+                    pos:2
+                }
+            });
+    
+            if(response?.success===true){
+                console.log(`Success => ${response?.data?.message}`);
+                console.log(`Success Response => ${JSON.stringify(response?.data)}`)
+            }
+            else
+            {
+                console.log(`Error Code => ${response?.code}`);
+                console.log(`fail => ${response?.message}`);
+            }
+
         }
         else
         {
-            console.log(`Error Code => ${response?.code}`);
-            console.log(`fail => ${response?.message}`);
+            console.log(`only support for UTXO base chain`);
         }
+        
     }
     catch(ex)
     {
