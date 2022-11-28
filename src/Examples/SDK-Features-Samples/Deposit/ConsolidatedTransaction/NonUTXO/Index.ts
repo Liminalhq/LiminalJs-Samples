@@ -26,7 +26,7 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth, // Define Your Coin here
-            walletId:1609 // Define Your Coin Wallet Id Here
+            walletId:3414 // Define Your Coin Wallet Id Here
         });
 
         // Step 3: Consolidate Send Transaction
@@ -35,7 +35,7 @@ export const main=async():Promise<void>=>{
             walletInstance:walletInstance,
             tsmCred:tsmCred,
             consolidateOptions:{
-                targetAddress: "0xC92745038c520446d1fb88c84Da268A22cfFDEB8", // Define Your Target Address Here
+                targetAddress: "0x2e73f21c7ea4ef53bc17a5c06e0cf1a168b85464" // Define Your Target Address Here
             },
             callBackSequenceId:(consolidateTransactionData: any)=> {
                 // Call Back Loop

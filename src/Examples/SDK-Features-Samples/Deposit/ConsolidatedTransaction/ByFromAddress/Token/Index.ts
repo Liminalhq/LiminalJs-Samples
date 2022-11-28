@@ -5,7 +5,7 @@ import { clientId, clientSecretId, env, tsmCred } from "../../../../../../Settin
 
 
 /**
- * Run Command => npm run start:stn
+ * Run Command => npm run start:stt
  * Docs => https://docs.lmnl.app/docs/consolidate-transaction
  */
 
@@ -26,7 +26,12 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth, // Define Your Coin here
-            walletId:1609 // Define Your Coin Wallet Id Here
+            walletId:3414, // Define Your Coin Wallet Id Here
+            allToken:true,
+            tokenOptions:{
+                tokenName:"dai",
+                tokenAddress:"0xdc31Ee1784292379Fbb2964b3B9C4124D8F89C60"
+            }
         });
 
         // Step 3: Consolidate Send Transaction
@@ -35,8 +40,8 @@ export const main=async():Promise<void>=>{
             walletInstance:walletInstance,
             tsmCred:tsmCred,
             consolidateOptions:{
-                targetAddress: "0xC92745038c520446d1fb88c84Da268A22cfFDEB8", // Define Your Target Address Here
-                fromAddress:"0x094FD2125d2ECE9e7BE6F4a5415A2e3Ab182920b"
+                targetAddress: "0x2e73f21c7ea4ef53bc17a5c06e0cf1a168b85464", // Define Your Target Address Here
+                fromAddress:"0x92BFFd4DC976c7781DE152DcE439a7C57740CE04"
             },
             callBackSequenceId:(consolidateTransactionData: any)=> {
                 // Call Back Loop

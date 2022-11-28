@@ -24,11 +24,11 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth,
-            walletId:310,
+            walletId:3412,
             allToken:true,
             tokenOptions:{
-                tokenName:"bat",
-                tokenAddress:"0xbF7A7169562078c96f0eC1A8aFD6aE50f12e5A99"
+                tokenName:"dai",
+                tokenAddress:"0xdc31Ee1784292379Fbb2964b3B9C4124D8F89C60"
             }
         });
 
@@ -41,8 +41,8 @@ export const main=async():Promise<void>=>{
             recipientsData:{
                 recipients:[
                     {
-                        address:"0x7f17bE241F88530DA74F035E8b74125fFEDeA98D",
-                        amount:0.00001
+                        address:"0x92BFFd4DC976c7781DE152DcE439a7C57740CE04",
+                        amount:0.0002
                     }
                 ],
                 sequenceId:sequenceId

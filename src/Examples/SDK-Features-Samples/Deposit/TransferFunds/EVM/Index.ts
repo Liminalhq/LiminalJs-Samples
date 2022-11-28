@@ -27,38 +27,46 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth, // Define Your Coin here
-            walletId:1609 // Define Your Coin Wallet Id Here
+            walletId:3414 // Define Your Coin Wallet Id Here
         });
 
-        // Step 3: Data Send Transaction 
-        let sequenceId:string=Guid.create().toString();
-        console.log("sequenceId =>", sequenceId);
+        if(walletInstance?.ParentChain==="EVM"){
 
-        let transactionResponse=await SendManyTransactionAsync({
-            walletInstance:walletInstance,
-            recipientsData:{
-                recipients:[
-                    {
-                        address:"0x20572e4c090f15667cF7378e16FaD2eA0e2f3EfF",
-                        amount:0.00001,
-                        data:"0x"
-                    },
+            // Step 3: Transfer funds from address to Destination address using Deposit Wallet
+            let sequenceId:string=Guid.create().toString();
+            console.log("sequenceId =>", sequenceId);
 
-                ],
-                fromAddress:"0xC92745038c520446d1fb88c84Da268A22cfFDEB8",
-                gasLimit:240000,
-                sequenceId:sequenceId,
-                tsmCreds:tsmCred
+            let transactionResponse=await SendManyTransactionAsync({
+                walletInstance:walletInstance,
+                recipientsData:{
+                    recipients:[
+                        {
+                            address:"0x2e73f21c7ea4ef53bc17a5c06e0cf1a168b85464",
+                            amount:0.00001,
+                            data:"0x"
+                        },
+
+                    ],
+                    fromAddress:"0x92BFFd4DC976c7781DE152DcE439a7C57740CE04",
+                    gasLimit:240000,
+                    sequenceId:sequenceId,
+                    tsmCreds:tsmCred
+                }
+            });
+
+            if(transactionResponse?.success===true){
+
+                console.log("Transaction Response =>",JSON.stringify(transactionResponse?.data));
             }
-        });
+            else
+            {
+                console.log(`Error => Transaction Response => ${transactionResponse?.message}`);
+            }
 
-        if(transactionResponse?.success===true){
-
-            console.log("Transaction Response =>",JSON.stringify(transactionResponse?.data));
         }
         else
         {
-            console.log(`Error => Transaction Response => ${transactionResponse?.message}`);
+            console.log(`This function only support for the EVM chain only.`);
         }
 
     }

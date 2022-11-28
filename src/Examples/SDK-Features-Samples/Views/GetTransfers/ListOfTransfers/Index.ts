@@ -24,7 +24,7 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth, // Specify your coin here
-            walletId:310, // Specify your coin wallet id here
+            walletId:3412, // Specify your coin wallet id here
             allToken:true  // Specify if your coin is EVM or TRON base otherwise do not include this property.
         });
 

@@ -1,6 +1,6 @@
 {
   "name": "@lmnl/liminaljs-typescript",
-  "version": "1.3.0-beta-25",
+  "version": "1.3.0-beta-26",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "start:mpc-key": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Initialize/GenerateSignerPublicKey/MPC/GenerateMPCKeyIdExample.ts",
     "start:psk-aws": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Initialize/GenerateSignerPublicKey/AWS/GetSignerPublicKeysExample.ts",
     "start:psk-mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Initialize/GenerateSignerPublicKey/MPC/GetSignerPublicKeysExample.ts",
-    "start:af": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Withdrawal/ApproxFeeRate/Index.ts",
+    "start:af": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Views/ApproxFeeRate/Index.ts",
     "start:block-utxo": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/BlockUTXO/Index.ts",
     "start:unblock-utxo": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/UnBlockUTXO/Index.ts",
     "start:ct-evm": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/ConsolidatedTransaction/NonUTXO/Index.ts",
@@ -38,8 +38,8 @@
     "start:dst": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/DataTransaction/EVM/Index.ts",
     "start:tfnc-mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Withdrawal/TransferFunds/MPC/Index.ts",
     "start:auth": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Initialize/Auth/Index.ts",
-    "start:stn": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/ConsolidatedTransaction/SingleTransaction/NativeCoin/Index.ts",
-    "start:stt": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/ConsolidatedTransaction/SingleTransaction/Token/Index.ts",
+    "start:stn": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/ConsolidatedTransaction/ByFromAddress/NativeCoin/Index.ts",
+    "start:stt": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/ConsolidatedTransaction/ByFromAddress/Token/Index.ts",
     "start:stdevm": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/TransferFunds/EVM/Index.ts",
     "start:gabt": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Views/GetAddressBalance/Token/ByAddress/Index.ts",
     "start:gabpt": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Views/GetAddressBalance/Token/Pagination/Index.ts",
