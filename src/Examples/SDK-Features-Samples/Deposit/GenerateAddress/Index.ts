@@ -28,7 +28,7 @@ export const main=async():Promise<void>=>{
         });
 
         let response;
-        if(tsmCred===undefined){
+        if(tsmCred!==undefined){
             // Step 3 Generate Address
             response=await GenerateAddressAsync({
                 path:0,
