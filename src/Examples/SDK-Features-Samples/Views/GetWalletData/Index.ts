@@ -56,7 +56,8 @@ export const main=async():Promise<void>=>{
             // Get parent chain
             console.log(`Parent Chain => ${walletInstance?.ParentChain}`);
 
-
+            // Get Wallet Type
+            console.log(`Wallet Type => ${walletInstance?.WalletType}`);
         }
         else
         {
