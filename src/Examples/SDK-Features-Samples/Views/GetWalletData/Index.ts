@@ -24,7 +24,7 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth, // Define your coin here
-            walletId:310, // Define your coin here
+            walletId:3412, // Define your coin here
             allToken:true  // Specify if your coin is EVM or TRON base otherwise do not include this property.
         });
 
@@ -35,11 +35,11 @@ export const main=async():Promise<void>=>{
 
         if(walletData?.success===true){
 
-            // Get Result
-            console.log(`Wallet Data => ${JSON.stringify(walletData?.data?.Result)}`);
-
-            // Get Data (Liminal)
+            // Get Data
             console.log(`Wallet Data => ${JSON.stringify(walletData?.data?.Data)}`);
+
+            // Get Result(Liminal)
+            console.log(`Wallet Data => ${JSON.stringify(walletData?.data?.Result)}`);
 
             // Get Wallet Id
             console.log(`Wallet Id => ${walletInstance?.WalletId}`);
@@ -56,7 +56,8 @@ export const main=async():Promise<void>=>{
             // Get parent chain
             console.log(`Parent Chain => ${walletInstance?.ParentChain}`);
 
-
+            // Get Wallet Type
+            console.log(`Wallet Type => ${walletInstance?.WalletType}`);
         }
         else
         {

@@ -24,7 +24,7 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth, // Define your Coin here
-            walletId:310 // Define your coin wallet Id
+            walletId:3412 // Define your coin wallet Id
         });
 
         // Step 3 : Send Transaction
@@ -36,8 +36,8 @@ export const main=async():Promise<void>=>{
             recipientsData:{
                 recipients:[
                     {
-                        address:"0x7f17bE241F88530DA74F035E8b74125fFEDeA98D",
-                        amount:0.00001,
+                        address:"0x92BFFd4DC976c7781DE152DcE439a7C57740CE04",
+                        amount:0.0001,
                         //data:""  //=> If you are using XRP
                     },
 

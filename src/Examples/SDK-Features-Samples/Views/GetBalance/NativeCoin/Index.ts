@@ -24,12 +24,7 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth, // Define your Coin Here
-            walletId:310, // Define Your Coin Wallet Here
-            // tokenOptions:{                        // If you need Token Balance
-            //     tokenName:"bat",
-            //     tokenAddress:"0xbF7A7169562078c96f0eC1A8aFD6aE50f12e5A99"
-            // },
-            // allToken:true 
+            walletId:3412
         });
 
         // Step 3: Get wallet Balance

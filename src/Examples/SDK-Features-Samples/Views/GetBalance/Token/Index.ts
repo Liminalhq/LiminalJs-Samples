@@ -24,11 +24,11 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth, // Define your Coin Here
-            walletId:310, // Define Your Coin Wallet Here
+            walletId:3412, // Define Your Coin Wallet Here
             allToken:true,
             tokenOptions:{                        // If you need Token Balance
-                tokenName:"bat",
-                tokenAddress:"0xbF7A7169562078c96f0eC1A8aFD6aE50f12e5A99"
+                tokenName:"dai",
+                tokenAddress:"0xdc31Ee1784292379Fbb2964b3B9C4124D8F89C60"
             },
            
         });

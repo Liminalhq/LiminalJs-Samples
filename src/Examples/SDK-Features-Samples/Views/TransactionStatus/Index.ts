@@ -25,13 +25,13 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth, // Define your coin here
-            walletId:310, // Define your coin wallet id here
+            walletId:3412, // Define your coin wallet id here
             allToken:true  // Specify if your coin is EVM or TRON base otherwise do not include this property.
         });
 
         // Step 3: Get Transaction Status by Sequence Id
         // Get sequenceId from your DB which you want to check the transaction status
-        let transactionSequenceId="56310902-57b6-c7a7-1891-e7874a5a6d44";
+        let transactionSequenceId="135c42b0-9f3b-0f9a-b697-0d9bd3cdedcb";
 
         let transactionStatusResult=await TransactionStatusAsync({
             walletInstance:walletInstance,

@@ -23,14 +23,14 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth, // Define your coin here
-            walletId:310 // Define your coin wallet id here.
+            walletId:3412 // Define your coin wallet id here.
         });
 
         // Step 3 Get address balance by passing address
         let response=await GetAddressBalanceAsync({
             walletInstance:walletInstance,
             getAddressBalanceOption:{
-                address:"0x4014c023192ef37a91adcea4ac2fdd90914bd76f", // Define address
+                address:"0x2e73f21c7ea4ef53bc17a5c06e0cf1a168b85464", // Define address
                 isTokenBalance:true
             }
         });
