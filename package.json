@@ -50,7 +50,7 @@
     "start:aml": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Views/GetAML/Index.ts",
     "start:gam-deposit": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/GenerateAddress/ManyAddress/Index.ts",
     "start:ct-tk": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Deposit/ConsolidatedTransaction/NonUTXO/Token/Index.ts",
-    "start:tft-mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Withdrawal/TransferFunds/MPC/NativeCoin/Index.ts",
+    "start:tft-mpc": "ts-node-dev --respawn --pretty --transpile-only ./src/Examples/SDK-Features-Samples/Withdrawal/TransferFunds/MPC/Token/Index.ts",
     "debug:cli": "ts-node-dev --inspect=4320 --pretty --transpile-only ./src/Cli/Index.ts",
     "build": "tsc -p tsconfig.json",
     "reset:env": "ts-node-dev --respawn --pretty --transpile-only ./src/Cli/Shared/ResetEnvFile.ts"
