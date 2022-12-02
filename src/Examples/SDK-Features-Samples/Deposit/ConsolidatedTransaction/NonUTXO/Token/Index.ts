@@ -1,11 +1,11 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
 import { ConsolidatedTransactionAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Guid } from "guid-typescript";
-import { clientId, clientSecretId, env, tsmCred } from "../../../../../Settings";
+import { clientId, clientSecretId, env, tsmCred } from "../../../../../../Settings";
 
 
 /**
- * Run Command => npm run start:ct-evm
+ * Run Command => npm run start:ct-tk
  * Docs => https://docs.lmnl.app/docs/consolidate-transaction
  */
 
@@ -26,7 +26,12 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.eth, // Define Your Coin here
-            walletId:3414 // Define Your Coin Wallet Id Here
+            walletId:3414, // Define Your Coin Wallet Id Here
+            allToken:true,
+            tokenOptions:{
+                tokenName:"dai",
+                tokenAddress:"0xdc31Ee1784292379Fbb2964b3B9C4124D8F89C60"
+            }
         });
 
         // Step 3: Consolidate Send Transaction

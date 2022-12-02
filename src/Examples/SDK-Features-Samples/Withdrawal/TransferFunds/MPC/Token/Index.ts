@@ -1,10 +1,10 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
 import { LiminalAuthAsync, SendManyTransactionAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Guid } from "guid-typescript";
-import { clientId, clientSecretId, env, tsmCred } from "../../../../../Settings";
+import { clientId, clientSecretId, env, tsmCred } from "../../../../../../Settings";
 
 /**
- * Run Command => npm run start:tfnc-mpc
+ * Run Command => npm run start:tft-mpc
  * Docs => https://docs.lmnl.app/docs/sendmany
  */
 export const main=async():Promise<void>=>{
@@ -24,7 +24,12 @@ export const main=async():Promise<void>=>{
         let walletInstance:Wallet=await WalletInstanceAsync({
             liminalJs:liminalJs,
             coin:CoinsEnum.sol, // Define your Coin here
-            walletId:3466 // Define your coin wallet Id
+            walletId:3466, // Define your coin wallet Id
+            allToken:true,
+            tokenOptions:{
+                tokenName:"Testtoken",
+                tokenAddress:"bfc7197e735d2748024be222ed510a23d8682e9f912769e6d922a276"
+            }
         });
 
         // Step 3 : Send Transaction
