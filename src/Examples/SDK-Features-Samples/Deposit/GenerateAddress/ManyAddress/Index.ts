@@ -5,7 +5,7 @@ import { clientId, clientSecretId,env, tsmCred } from "../../../../../Settings";
 
 /**
  * Run Command => npm run start:gam-deposit
- * Docs => https://docs.lmnl.app/docs/generate-address
+ * Docs => https://docs.lmnl.app/docs/generate-many-address
  */
 export const main=async():Promise<void>=>{
 

@@ -4,7 +4,7 @@ import { clientId, clientSecretId, env } from "../../../../Settings";
 
 /**
  * Run Command => npm run start:aml
- * Docs => 
+ * Docs => https://docs.lmnl.app/docs/get-aml-result
  */
 
 export const main=async():Promise<void>=>{

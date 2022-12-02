@@ -6,7 +6,7 @@ import { clientId, clientSecretId, env, tsmCred } from "../../../../../Settings"
 
 /**
  * Run Command => npm run start:dst
- * Docs => https://docs.lmnl.app/docs/sendmany
+ * Docs => https://docs.lmnl.app/docs/transfer-funds-by-data-contract
  */
 
 export const main=async():Promise<void>=>{

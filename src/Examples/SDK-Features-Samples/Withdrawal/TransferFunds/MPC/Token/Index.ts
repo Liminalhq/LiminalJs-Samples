@@ -5,7 +5,7 @@ import { clientId, clientSecretId, env, tsmCred } from "../../../../../../Settin
 
 /**
  * Run Command => npm run start:tft-mpc
- * Docs => https://docs.lmnl.app/docs/sendmany
+ * Docs => https://docs.lmnl.app/docs/transfer-funds-token-by-mpc
  */
 export const main=async():Promise<void>=>{
 

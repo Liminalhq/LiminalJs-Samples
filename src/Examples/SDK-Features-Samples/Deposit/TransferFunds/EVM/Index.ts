@@ -7,7 +7,7 @@ import { clientId, clientSecretId, env, tsmCred } from "../../../../../Settings"
 /**
  * Single Transaction using deposit Wallet
  * Run Command => npm run start:stdevm
- * Docs => https://docs.lmnl.app/docs/sendmany
+ * Docs => https://docs.lmnl.app/docs/transfer-funds
  */
 
 export const main=async():Promise<void>=>{

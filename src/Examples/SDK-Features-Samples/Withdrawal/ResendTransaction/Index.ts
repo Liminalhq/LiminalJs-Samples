@@ -4,7 +4,7 @@ import { clientId, clientSecretId, env } from "../../../../Settings";
 
 /**
  * Run Command => npm run start:re
- * Docs => https://docs.lmnl.app/docs/consolidate-transaction
+ * Docs => https://docs.lmnl.app/docs/resend-transaction
  * Note : EVM base Transaction only
  */
 export const main=async():Promise<void>=>{

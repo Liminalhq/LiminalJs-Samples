@@ -4,7 +4,7 @@ import { clientId, clientSecretId, env } from "../../../../../../Settings";
 
 /**
  * Run Command => npm run start:gabpt
- * Docs => https://docs.lmnl.app/docs/get-address-balance
+ * Docs => https://docs.lmnl.app/docs/get-address-balance-by-token
  */
 export const main=async():Promise<void>=>{
 

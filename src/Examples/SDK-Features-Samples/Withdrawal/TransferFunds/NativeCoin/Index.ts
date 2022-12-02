@@ -5,7 +5,7 @@ import { clientId, clientSecretId, env } from "../../../../../Settings";
 
 /**
  * Run Command => npm run start:tfnc
- * Docs => https://docs.lmnl.app/docs/sendmany
+ * Docs => https://docs.lmnl.app/docs/transfer-fund-native-coin
  */
 export const main=async():Promise<void>=>{
 

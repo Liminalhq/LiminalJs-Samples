@@ -4,7 +4,7 @@ import { clientId, clientSecretId, env } from "../../../../Settings";
 
 /**
  * Run Command => npm run start:gtlp
- * Docs => https://docs.lmnl.app/docs/transfers
+ * Docs => https://docs.lmnl.app/docs/authentication
  */
 
 export const main=async():Promise<void>=>{

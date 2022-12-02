@@ -5,7 +5,7 @@ import { clientId, clientSecretId } from "../../../../../Settings";
 
 /**
  * Run Command => npm run start:tft
- * Docs =>https://docs.lmnl.app/docs/sendmany-tokens
+ * Docs => https://docs.lmnl.app/docs/transfer-funds-token
  */
 export const main=async():Promise<void>=>{
 
