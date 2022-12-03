@@ -63,12 +63,12 @@ export const main=async():Promise<void>=>{
         
                     if(nextIterator?.value?.success===true)
                     {
-                        console.log("Address Type =>",JSON.stringify(response?.data));
+                        console.log("Address Type =>",JSON.stringify(nextIterator?.value?.data));
                         console.log(`Address Path m/0/${counter} => ${nextIterator?.value?.data?.address}`);
                     }
                     else
                     {
-                        console.log(`Error => Address Type => ${response?.message}`);
+                        console.log(`Error => Address Type => ${nextIterator?.value?.message}`);
                     }
                 }
             }
