@@ -1,12 +1,13 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
 import { LiminalAuthAsync, SendManyTransactionAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Guid } from "guid-typescript";
-import { clientId, clientSecretId, env, tsmCred } from "../../../../../Settings";
+import { clientId, clientSecretId, env, tsmCred } from "../../../../../../Settings";
 
 
 /**
- * Run Command => npm run start:dst
- * Docs => https://docs.lmnl.app/docs/transfer-funds-by-data-contract
+ * Single Transaction using deposit Wallet
+ * Run Command => npm run start:stdevm
+ * Docs => https://docs.lmnl.app/docs/transfer-funds-native-coin
  */
 
 export const main=async():Promise<void>=>{
@@ -31,7 +32,7 @@ export const main=async():Promise<void>=>{
 
         if(walletInstance?.ParentChain==="EVM"){
 
-            // Step 3: Data Send Transaction 
+            // Step 3: Transfer funds from address to Destination address using Deposit Wallet
             let sequenceId:string=Guid.create().toString();
             console.log("sequenceId =>", sequenceId);
 
@@ -42,7 +43,7 @@ export const main=async():Promise<void>=>{
                         {
                             address:"0x2e73f21c7ea4ef53bc17a5c06e0cf1a168b85464",
                             amount:0.00001,
-                            data:"0x1249c58b"
+                            data:"0x"
                         },
 
                     ],
@@ -67,6 +68,7 @@ export const main=async():Promise<void>=>{
         {
             console.log(`This function only support for the EVM chain only.`);
         }
+
     }
     catch(ex)
     {

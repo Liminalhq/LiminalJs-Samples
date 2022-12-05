@@ -1,12 +1,12 @@
 import { CoinsEnum, LiminalEnvironment, LiminalJs, Wallet } from "@lmnl/liminaljs";
 import { ConsolidatedTransactionAsync, LiminalAuthAsync, WalletInstanceAsync } from "@lmnl/liminaljs/lib/V2/LiminalClientHelper";
 import { Guid } from "guid-typescript";
-import { clientId, clientSecretId, env, tsmCred } from "../../../../../Settings";
+import { clientId, clientSecretId, env, tsmCred } from "../../../../../../Settings";
 
 
 /**
- * Run Command => npm run start:ct-evm
- * Docs => https://docs.lmnl.app/docs/consolidate-transaction
+ * Run Command => npm run start:ct-nt
+ * Docs => https://docs.lmnl.app/docs/consolidated-transaction-by-non-utxo-native-coin
  */
 
 export const main=async():Promise<void>=>{

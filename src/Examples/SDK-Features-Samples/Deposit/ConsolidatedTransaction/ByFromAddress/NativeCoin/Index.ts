@@ -6,7 +6,7 @@ import { clientId, clientSecretId, env, tsmCred } from "../../../../../../Settin
 
 /**
  * Run Command => npm run start:stn
- * Docs => https://docs.lmnl.app/docs/consolidate-transaction
+ * Docs => https://docs.lmnl.app/docs/consolidated-transaction-from-address-native-coin
  */
 
 export const main=async():Promise<void>=>{

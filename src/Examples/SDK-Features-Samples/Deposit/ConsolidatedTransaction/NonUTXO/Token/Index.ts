@@ -5,8 +5,8 @@ import { clientId, clientSecretId, env, tsmCred } from "../../../../../../Settin
 
 
 /**
- * Run Command => npm run start:stt
- * Docs => https://docs.lmnl.app/docs/consolidated-transaction-from-address-token
+ * Run Command => npm run start:ct-tk
+ * Docs => https://docs.lmnl.app/docs/consolidated-transaction-by-non-utxo-token
  */
 
 export const main=async():Promise<void>=>{
@@ -40,8 +40,7 @@ export const main=async():Promise<void>=>{
             walletInstance:walletInstance,
             tsmCred:tsmCred,
             consolidateOptions:{
-                targetAddress: "0x2e73f21c7ea4ef53bc17a5c06e0cf1a168b85464", // Define Your Target Address Here
-                fromAddress:"0x92BFFd4DC976c7781DE152DcE439a7C57740CE04"
+                targetAddress: "0x2e73f21c7ea4ef53bc17a5c06e0cf1a168b85464" // Define Your Target Address Here
             },
             callBackSequenceId:(consolidateTransactionData: any)=> {
                 // Call Back Loop

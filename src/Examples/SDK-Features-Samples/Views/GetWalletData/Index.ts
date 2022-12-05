@@ -5,7 +5,7 @@ import { clientId, clientSecretId, env } from "../../../../Settings";
 
 /**
  * Run Command => npm run start:gwd
- * Docs => https://docs.lmnl.app/docs/wallet
+ * Docs => https://docs.lmnl.app/docs/get-wallet-data
  */
 export const main=async():Promise<void>=>{
 

@@ -4,7 +4,7 @@ import { clientId, clientSecretId, env } from "../../../../../Settings";
 
 /**
  * Run Command => npm run start:pts
- * Docs => 
+ * Docs => https://docs.lmnl.app/docs/get-pending-transaction
  */
 export const main=async():Promise<void>=>{
 

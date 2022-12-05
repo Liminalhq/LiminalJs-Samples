@@ -5,7 +5,7 @@ import { clientId, clientSecretId, env } from "../../../../../Settings";
 
 /**
  * Run Command => npm run start:ct-utxo
- * Docs => https://docs.lmnl.app/docs/consolidate-transaction
+ * Docs => https://docs.lmnl.app/docs/consolidate-transaction-utxo
  */
 
 export const main=async():Promise<void>=>{

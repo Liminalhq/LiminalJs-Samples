@@ -5,7 +5,7 @@ import { clientId, clientSecretId, env } from "../../../../Settings";
 
 /**
  * Run Command => npm run start:fo
- * Docs => https://docs.lmnl.app/docs/fanout-transaction
+ * Docs =>https://docs.lmnl.app/docs/fanout-transaction
  */
 
 export const main=async():Promise<void>=>{
