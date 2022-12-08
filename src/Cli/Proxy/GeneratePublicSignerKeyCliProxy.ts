@@ -36,6 +36,7 @@ export class GeneratePublicSignerKeyCliProxy{
                 process.env.PROVIDER_NAME="AWS";
                 //console.log(`region => ${process?.env?.REGION}`);
     
+                console.log(`Generating Public Signer Keys.....`);
                 
                 response=await GetSignerPublicKeyAsync({
                     liminalJs:liminalJs,
@@ -65,6 +66,8 @@ export class GeneratePublicSignerKeyCliProxy{
                     env:LiminalEnvironment[process?.env?.ENVIRONMENT]
                 });
 
+                console.log(`Generating Public Signer Keys.....`);
+                
                 response=await GetSignerPublicKeyAsync({
                     liminalJs:liminalJs,
                     cloudProvider:CloudProvider[process?.env?.PROVIDER_NAME],  // it should be MPC
@@ -102,7 +105,8 @@ export class GeneratePublicSignerKeyCliProxy{
                
                 process.env.PROVIDER_NAME="AZURE";
                 //console.log(`region => ${process?.env?.REGION}`);
-    
+
+                console.log(`Generating Public Signer Keys.....`);
                 
                 response=await GetSignerPublicKeyAsync({
                     liminalJs:liminalJs,
