@@ -16,26 +16,13 @@ const main=async():Promise<void>=>{
   try
   {
     
-    // ['SIGINT', 'SIGTERM', 'SIGQUIT']
-    //   .forEach(signal => process.on(signal, () => {
-    //     console.log("Cancel");
-    //     process.exit();
-    //   }));
-
-//     setTimeout(function () {
-
-//       process.on("exit", function () {
-// ​
-//         console.log("Destroying");
-//         //StartNPMCommand("start:cli");
-// ​
-//       });
-
-//     }, 1000);
+    // Clear the Screen
     clear();
 
+    // Add LiminalJs Banner
     Banner();
     
+    // Show Main Menu
     await SelectOption();
   }
   catch(ex)
