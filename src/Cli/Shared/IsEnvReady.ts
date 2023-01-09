@@ -96,7 +96,7 @@ export const IsEnvReady=(): boolean=>{
 
 export const IsEnvReadyMPC=(coin:string): boolean=>{
 
-    if(coin!=="BCH" && coin!=="BTC" && coin!=="DOGE" && coin!=="LTC" && coin!=="XRP"){
+    if(coin!=="BCH" && coin!=="BTC" && coin!=="DOGE" && coin!=="LTC" && coin!=="XRP" && coin!=="UATOM" && coin!=="UMLG"){
         let countBool:Array<boolean>=new Array<boolean>();
         let counterCondition:number=0;
 
