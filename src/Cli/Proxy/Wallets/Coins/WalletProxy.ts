@@ -30,7 +30,7 @@ export class WalletProxy{
             }
             
         }
-        else if(env==="prod")
+        else if(env==="prod" || env==="beta")
         {
             // Get Co Signer Email Id
             let coSignerEmailId:string[]=await GetCoSignersEmailIds();

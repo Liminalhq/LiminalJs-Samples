@@ -22,7 +22,8 @@ export class CreateSDKKeyCliProxy{
                                     message: 'Environment =>',
                                     choices: [
                                         'test',
-                                        'prod'
+                                        'prod',
+                                        'beta'
                                     ],
                                     
                                 },
