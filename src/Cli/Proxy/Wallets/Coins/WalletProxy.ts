@@ -26,7 +26,12 @@ export class WalletProxy{
             }
             else if(params?.walletType===WalletType.Withdrawal)
             {
-                walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app","mansi@lmnl.app"],params?.cloudProvider);
+                if(params.coin === CoinsEnum.dot){
+                    walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["sumant+devtest@lmnl.app","mansi@lmnl.app"],params?.cloudProvider);
+                }
+                else{
+                    walletId=await this.CreatePipelineWalletAsync(params?.coin,params?.walletType, ["dhruvil@lmnl.app","mansi@lmnl.app"],params?.cloudProvider);
+                }
             }
             
         }
