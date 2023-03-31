@@ -68,6 +68,12 @@ export class GeneratePublicSignerKeyCliProxy{
 
                 console.log(`Generating Public Signer Keys.....`);
                 
+                let _version:number|undefined=Number(process?.env?.TSM_NODE_VERSION);
+
+                if(_version<=0 || isNaN(_version)){
+                    _version=undefined
+                }
+
                 response=await GetSignerPublicKeyAsync({
                     liminalJs:liminalJs,
                     cloudProvider:CloudProvider[process?.env?.PROVIDER_NAME],  // it should be MPC
@@ -75,7 +81,8 @@ export class GeneratePublicSignerKeyCliProxy{
                         url:process?.env?.TSM_URL,
                         userID:process?.env?.TSM_USER_ID,
                         password:process?.env?.TSM_PASSWORD,
-                        publicKey:process?.env?.TSM_PUBLIC_KEY
+                        publicKey:process?.env?.TSM_PUBLIC_KEY,
+                        version:_version
                     } 
                 });
                 let jsonValue:string=JSON.stringify(response);

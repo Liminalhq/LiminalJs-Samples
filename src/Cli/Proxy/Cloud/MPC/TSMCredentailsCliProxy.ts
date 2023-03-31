@@ -79,6 +79,30 @@ export class TSMCredentialsCliProxy{
                                          }
                                     }
                                     
+                                },
+                                {
+                                    type: 'input',
+                                    name: 'nodeVersion',
+                                    message: 'nodeVersion =>',
+                                    validate(value){
+                                        
+                                        if(value!==undefined && value!==""){
+
+                                            if(typeof value==="string"){
+
+                                                let _value=Number(value);
+
+                                                if(isNaN(_value)){
+                                                    return "node version should be number";
+                                                }
+
+                                                return true;
+                                            }
+                                        }
+
+                                        return true;
+                                    }
+                                    
                                 }
                                 
                             ]
@@ -129,11 +153,18 @@ export class TSMCredentialsCliProxy{
 
                     let answer=await this.question;
 
+                    let _version:number|undefined=Number(answer.nodeVersion);
+
+                    if(_version<=0 || isNaN(_version)){
+                        _version=undefined;
+                    }
+
                     tsmCred={
                         userID:answer.userId,
                         password:answer.password,
                         url:answer.url,
-                        publicKey:answer.publicKey
+                        publicKey:answer.publicKey,
+                        version:_version ?? 0
                     };
                 }
             
@@ -154,6 +185,10 @@ export class TSMCredentialsCliProxy{
                     {
                         key:"TSM_PUBLIC_KEY",
                         value:tsmCred?.publicKey
+                    },
+                    {
+                        key:"TSM_NODE_VERSION",
+                        value:String(tsmCred?.version ?? 0)
                     }
                 ]);
 
@@ -161,6 +196,7 @@ export class TSMCredentialsCliProxy{
                 process.env.TSM_USER_ID=tsmCred?.userID;
                 process.env.TSM_PASSWORD=tsmCred?.password;
                 process.env.TSM_PUBLIC_KEY=tsmCred?.publicKey;
+                process.env.TSM_NODE_VERSION=String(tsmCred?.version ?? 0);
 
                 clear();
 
