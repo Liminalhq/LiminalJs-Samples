@@ -52,6 +52,10 @@ export const ResetEnvFile=():void=>{
             value:"YOUR_TSM_PUBLIC_KEY"
         },
         {
+            key:"TSM_NODE_VERSION",
+            value:"YOUR_TSM_NODE_VERSION"
+        },
+        {
             key:"TARGET_ADDRESS",
             value:"YOUR_TARGET_ADDRESS"
         },

@@ -16,6 +16,8 @@ export const GetCoinList=():Array<string>=>{
         "ADA",
         "XDC",
         "KLAY",
-        "XLM"
+        "XLM",
+        "DOT",
+        "NEAR"
     ]
 }
